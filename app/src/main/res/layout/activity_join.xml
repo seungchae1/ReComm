@@ -23,6 +23,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
+        android:id="@+id/edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -48,7 +49,7 @@
         android:layout_marginBottom="41dp"
         android:backgroundTint="@color/white"
         android:contentDescription="다음"
-        android:src="@drawable/redbtn"
+        android:src="@drawable/nredbtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

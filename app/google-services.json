@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "192889141246",
+    "project_id": "androidrecomm",
+    "storage_bucket": "androidrecomm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192889141246:android:c768132b3a5e39dd5772af",
+        "android_client_info": {
+          "package_name": "com.example.recomm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "192889141246-74hfnsdabicmdmqit0u7prblglvcmqj5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLONwDmiWsmy_kjPy3RbV7Uuutzwnz5tc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "192889141246-74hfnsdabicmdmqit0u7prblglvcmqj5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

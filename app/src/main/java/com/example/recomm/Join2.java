@@ -21,7 +21,6 @@ public class Join2 extends AppCompatActivity {
         setContentView(R.layout.activity_join2);
         imgbtn = findViewById(R.id.imageButton);
         edit = findViewById(R.id.edit);
-        edit2 = findViewById(R.id.edit2);
         input = input2 = false;
 
         edit.addTextChangedListener(new TextWatcher() {
@@ -41,26 +40,6 @@ public class Join2 extends AppCompatActivity {
                     input = false;
                 }else{
                     input = true;
-                }
-            }
-        });
-        edit2.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if(s.length() <= 0 ){
-                    input2 = false;
-                }else{
-                    input2 = true;
                 }
             }
         });

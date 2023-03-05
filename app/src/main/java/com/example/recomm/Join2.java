@@ -9,12 +9,17 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.google.android.material.textfield.TextInputLayout;
 
 public class Join2 extends AppCompatActivity {
 
     ImageButton imgbtn;
     EditText edit, edit2;
     boolean samepass, input, input2;
+    TextInputLayout t;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +28,7 @@ public class Join2 extends AppCompatActivity {
         edit = findViewById(R.id.edit);
         edit2 = findViewById(R.id.edit2);
         samepass = input = input2 = false;
+        t= findViewById(R.id.text2);
 
         edit.addTextChangedListener(new TextWatcher() {
             @Override
@@ -75,6 +81,10 @@ public class Join2 extends AppCompatActivity {
                 String pass2 = edit2.getText().toString();
                 samepass = pass1.equals(pass2) && !pass1.equals("") && !pass2.equals("");
                 if(samepass)startActivity(intent);
+                else{
+                    t.setError(" ");
+                    t.setErrorIconDrawable(null);
+                }
             }
         });
     }

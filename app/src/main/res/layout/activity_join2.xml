@@ -34,6 +34,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.2"
         app:passwordToggleDrawable="@drawable/eye"
+        app:boxBackgroundColor="@color/white"
         app:passwordToggleEnabled="true">
 
         <EditText
@@ -44,19 +45,16 @@
             android:layout_marginLeft="16dp"
             android:layout_marginEnd="0dp"
             android:layout_marginRight="16dp"
-            android:backgroundTint="@color/white"
             android:fontFamily="@font/notosans_kr_regular"
             android:hint="비밀번호"
             android:inputType="textPassword"
-            android:textColorHighlight="#D1D1D1"
             android:textColorHint="#777777"
             android:textCursorDrawable="@drawable/cursor"
             android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="SpeakableTextPresentCheck,DuplicateClickableBoundsCheck" />
+            app:layout_constraintTop_toTopOf="parent"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -69,6 +67,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/text1"
         app:layout_constraintVertical_bias="0.25"
+        app:errorEnabled="true"
+        app:errorTextColor="#FF4646"
+        app:boxStrokeErrorColor="#FF4646"
         app:passwordToggleDrawable="@drawable/eye"
         app:passwordToggleEnabled="true">
 

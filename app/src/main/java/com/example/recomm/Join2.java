@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -80,7 +81,7 @@ public class Join2 extends AppCompatActivity {
         imgbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Intro.class);
+                Intent intent = new Intent(getApplicationContext(), Join3.class);
                 String pass1 = edit.getText().toString();
                 String pass2 = edit2.getText().toString();
                 samepass = pass1.equals(pass2) && !pass1.equals("") && !pass2.equals("");

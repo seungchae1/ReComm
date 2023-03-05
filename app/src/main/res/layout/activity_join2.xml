@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Join">
+    tools:context=".Join2">
 
     <TextView
         android:id="@+id/textView4"
@@ -27,6 +27,9 @@
         android:id="@+id/text1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:boxBackgroundColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -34,7 +37,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.2"
         app:passwordToggleDrawable="@drawable/eye"
-        app:boxBackgroundColor="@color/white"
         app:passwordToggleEnabled="true">
 
         <EditText
@@ -62,15 +64,17 @@
         android:id="@+id/text2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:boxStrokeErrorColor="#FF4646"
+        app:errorEnabled="true"
+        app:errorTextColor="#FF4646"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/text1"
         app:layout_constraintVertical_bias="0.25"
-        app:errorEnabled="true"
-        app:errorTextColor="#FF4646"
-        app:boxStrokeErrorColor="#FF4646"
         app:passwordToggleDrawable="@drawable/eye"
         app:passwordToggleEnabled="true">
 

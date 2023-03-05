@@ -17,6 +17,8 @@ import com.google.android.material.textfield.TextInputLayout;
 public class Join2 extends AppCompatActivity {
 
     ImageButton imgbtn;
+    ImageView imgv;
+    TextView textv;
     EditText edit, edit2;
     boolean samepass, input, input2;
     TextInputLayout t;
@@ -29,6 +31,8 @@ public class Join2 extends AppCompatActivity {
         edit2 = findViewById(R.id.edit2);
         samepass = input = input2 = false;
         t= findViewById(R.id.text2);
+        imgv = findViewById(R.id.imageView2);
+        textv = findViewById(R.id.textView5);
 
         edit.addTextChangedListener(new TextWatcher() {
             @Override
@@ -84,6 +88,8 @@ public class Join2 extends AppCompatActivity {
                 else{
                     t.setError(" ");
                     t.setErrorIconDrawable(null);
+                    textv.setText("비밀번호를 확인해주세요.");
+                    imgv.setImageResource(R.drawable.error);
                 }
             }
         });

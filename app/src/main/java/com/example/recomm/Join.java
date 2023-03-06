@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import java.io.Serializable;
+
 public class Join extends AppCompatActivity {
 
     ImageButton imgbtn;
@@ -50,7 +52,10 @@ public class Join extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(input){
+                    User user= new User();
+                    user.email = edit.getText().toString();
                     Intent intent = new Intent(getApplicationContext(), Join2.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                 }
             }

@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.io.Serializable;
+
 public class Join2 extends AppCompatActivity {
 
     ImageButton imgbtn;
@@ -81,11 +83,17 @@ public class Join2 extends AppCompatActivity {
         imgbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent getintent = getIntent();
+                User user = (User)getintent.getSerializableExtra("user");
+                user.setPass(edit.getText().toString());
                 Intent intent = new Intent(getApplicationContext(), Join3.class);
+                intent.putExtra("user", user);
                 String pass1 = edit.getText().toString();
                 String pass2 = edit2.getText().toString();
                 samepass = pass1.equals(pass2) && !pass1.equals("") && !pass2.equals("");
-                if(samepass)startActivity(intent);
+                if(samepass){
+                    startActivity(intent);
+                }
                 else{
                     t.setError(" ");
                     t.setErrorIconDrawable(null);

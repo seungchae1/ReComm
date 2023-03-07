@@ -63,7 +63,7 @@ public class Join3 extends AppCompatActivity {
                 user.setBirth(edit2.getText().toString());
                 Intent intent = new Intent(getApplicationContext(), Login2.class);
                 if(input) {
-                    db.setValue(user);
+                    db.child(user.name).setValue(user);
                     startActivity(intent);
                 }
             }

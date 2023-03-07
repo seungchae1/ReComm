@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ReComm</string>
+    <string-array name="spinner_array">
+        <item>gmail.com</item>
+        <item>naver.com</item>
+        <item>daum.net</item>
+    </string-array>
 </resources>

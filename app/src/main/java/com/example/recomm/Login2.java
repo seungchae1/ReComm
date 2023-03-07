@@ -2,6 +2,7 @@ package com.example.recomm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ public class Login2 extends AppCompatActivity {
     EditText edit, edit2;
     ImageButton imgbtn;
     TextView newpass;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +31,7 @@ public class Login2 extends AppCompatActivity {
         edit = findViewById(R.id.edit);
         edit2 = findViewById(R.id.edit2);
         imgbtn= findViewById(R.id.imageButton);
-        newpass = findViewById(R.id.newpass);
+        newpass = findViewById(R.id.Newpass);
         check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

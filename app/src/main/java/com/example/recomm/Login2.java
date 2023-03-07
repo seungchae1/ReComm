@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -19,6 +20,7 @@ public class Login2 extends AppCompatActivity {
     CheckBox check;
     EditText edit, edit2;
     ImageButton imgbtn;
+    TextView newpass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,7 @@ public class Login2 extends AppCompatActivity {
         edit = findViewById(R.id.edit);
         edit2 = findViewById(R.id.edit2);
         imgbtn= findViewById(R.id.imageButton);
+        newpass = findViewById(R.id.newpass);
         check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,6 +42,14 @@ public class Login2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            }
+        });
+
+        newpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Newpass.class);
+                startActivity(intent);
             }
         });
     }

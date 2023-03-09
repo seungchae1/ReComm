@@ -15,6 +15,9 @@
         android:theme="@style/Theme.ReComm"
         tools:targetApi="31">
         <activity
+            android:name=".Newpass2"
+            android:exported="false" />
+        <activity
             android:name=".Newpass"
             android:exported="false" />
         <activity

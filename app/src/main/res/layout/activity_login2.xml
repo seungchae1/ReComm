@@ -23,37 +23,64 @@
         app:layout_constraintVertical_bias="0.0" />
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text1"
+    <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:boxBackgroundColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.2">
 
-        <EditText
-            android:id="@+id/edit"
+        <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginRight="16dp"
-            android:fontFamily="@font/notosans_kr_regular"
-            android:hint="이메일"
-            android:textSize="16dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="SpeakableTextPresentCheck" />
-    </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintVertical_bias="0">
+
+            <EditText
+                android:id="@+id/edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/notosans_kr_regular"
+                android:hint="이메일"
+                android:textColorHint="#777777"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.159" />
+
+            <Spinner
+                android:id="@+id/Spinn"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/myrectangle"
+                app:layout_constraintBottom_toBottomOf="@+id/edit"
+                app:layout_constraintStart_toEndOf="@+id/edit"
+                app:layout_constraintTop_toTopOf="@+id/edit"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
+
+        </LinearLayout>
+
+    </FrameLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text2"
@@ -66,34 +93,13 @@
         app:errorTextColor="#FF4646"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/text1"
-        app:layout_constraintVertical_bias="0.25"
+        app:layout_constraintTop_toTopOf="@+id/frameLayout"
+        app:layout_constraintVertical_bias="0.2"
         app:passwordToggleDrawable="@drawable/eye"
         app:passwordToggleEnabled="true">
 
-        <EditText
-            android:id="@+id/edit2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginRight="16dp"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/notosans_kr_regular"
-            android:hint="비밀번호"
-            android:inputType="textPassword"
-            android:textColorHighlight="#D1D1D1"
-            android:textColorHint="#777777"
-            android:textCursorDrawable="@drawable/cursor"
-            android:textSize="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
@@ -170,6 +176,7 @@
         android:src="@drawable/nredbtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageButton"
         app:layout_constraintVertical_bias="1.0" />
@@ -186,5 +193,27 @@
         app:layout_constraintEnd_toEndOf="@id/imageButton"
         app:layout_constraintStart_toStartOf="@id/imageButton"
         app:layout_constraintTop_toTopOf="@id/imageButton" />
+
+    <EditText
+        android:id="@+id/edit2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/notosans_kr_regular"
+        android:hint="비밀번호"
+        android:inputType="textPassword"
+        android:textColorHighlight="#D1D1D1"
+        android:textColorHint="#777777"
+        android:textCursorDrawable="@drawable/cursor"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/text2"
+        app:layout_constraintEnd_toEndOf="@+id/text2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/text2"
+        app:layout_constraintTop_toTopOf="@+id/text2"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

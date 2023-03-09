@@ -22,7 +22,7 @@ public class Newpass extends AppCompatActivity {
     EditText edit;
     Spinner spin;
     boolean input;
-
+    String userM;
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
     DatabaseReference db = mRootRef.child("user");
     @Override
@@ -34,7 +34,6 @@ public class Newpass extends AppCompatActivity {
         spin = (Spinner) findViewById(R.id.Spinn);
         input = false;
 
-        String userM =edit.getText().toString();
         String[] mail = getResources().getStringArray(R.array.spinner_array);
         ArrayAdapter arrayAdapter = ArrayAdapter.createFromResource(this, R.array.spinner_array, android.R.layout.simple_spinner_item);
         spin.setAdapter(arrayAdapter);
@@ -43,13 +42,13 @@ public class Newpass extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 0:
-                        userM.concat("g");
+                        userM=edit.getText().toString().concat("g");
                         break;
                     case 1:
-                        userM.concat("n");
+                        userM=edit.getText().toString().concat("n");
                         break;
                     case 2:
-                        userM.concat("d");
+                        userM=edit.getText().toString().concat("d");
                         break;
                 }
             }

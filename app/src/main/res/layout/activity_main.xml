@@ -23,11 +23,11 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@id/sliderViewPager"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/sliderViewPager"
-        app:layout_constraintVertical_bias="0.95" />
+        app:layout_constraintVertical_bias="0.85" />
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="match_parent"

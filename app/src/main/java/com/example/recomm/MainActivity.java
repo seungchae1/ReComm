@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout layoutIndicator;
 
     private String[] images = new String[] {
-            "R.drawable.img1"
+            "https://www.figma.com/file/fzj98K0891nBzYGwGqqmn0/recomm_app_%EC%99%80%EC%9D%B4%EC%96%B4%ED%94%84%EB%A0%88%EC%9E%84?node-id=153%3A545&t=Tis8XY4xI86Zp4HS-4"
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {

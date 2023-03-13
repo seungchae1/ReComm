@@ -100,6 +100,26 @@
         app:passwordToggleDrawable="@drawable/eye"
         app:passwordToggleEnabled="true">
 
+        <EditText
+            android:id="@+id/edit2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/notosans_kr_regular"
+            android:hint="비밀번호"
+            android:inputType="textPassword"
+            android:background="@color/white"
+            android:textCursorDrawable="@drawable/cursor"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
@@ -193,27 +213,5 @@
         app:layout_constraintEnd_toEndOf="@id/imageButton"
         app:layout_constraintStart_toStartOf="@id/imageButton"
         app:layout_constraintTop_toTopOf="@id/imageButton" />
-
-    <EditText
-        android:id="@+id/edit2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/white"
-        android:fontFamily="@font/notosans_kr_regular"
-        android:hint="비밀번호"
-        android:inputType="textPassword"
-        android:textColorHighlight="#D1D1D1"
-        android:textColorHint="#777777"
-        android:textCursorDrawable="@drawable/cursor"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/text2"
-        app:layout_constraintEnd_toEndOf="@+id/text2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/text2"
-        app:layout_constraintTop_toTopOf="@+id/text2"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

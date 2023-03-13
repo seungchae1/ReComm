@@ -33,7 +33,7 @@ public class Join extends AppCompatActivity {
 
 
         User user= new User();
-        user.email=edit.getText().toString().concat("g");
+        user.email="g";
         String[] mail = getResources().getStringArray(R.array.spinner_array);
         ArrayAdapter arrayAdapter = ArrayAdapter.createFromResource(this, R.array.spinner_array, android.R.layout.simple_spinner_item);
         spin.setAdapter(arrayAdapter);
@@ -42,13 +42,13 @@ public class Join extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 0:
-                        user.email=edit.getText().toString().concat("g");
+                        user.email="g";
                         break;
                     case 1:
-                        user.email=edit.getText().toString().concat("n");
+                        user.email="n";
                         break;
                     case 2:
-                        user.email=edit.getText().toString().concat("d");
+                        user.email="d";
                         break;
                 }
             }
@@ -87,6 +87,7 @@ public class Join extends AppCompatActivity {
             public void onClick(View v) {
                 if(input){
                     Intent intent = new Intent(getApplicationContext(), Join2.class);
+                    user.email+=edit.getText().toString();
                     intent.putExtra("user", user);
                     startActivity(intent);
                 }

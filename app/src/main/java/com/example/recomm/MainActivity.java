@@ -4,28 +4,39 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.util.AttributeSet;
+import android.util.Log;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
+    public TypedArray ArrayImages;
     private ViewPager2 sliderViewPager;
-    private LinearLayout layoutIndicator;
+    private Adapter adapter;
 
-    private String[] images = new String[] {
-            "https://www.figma.com/file/fzj98K0891nBzYGwGqqmn0/recomm_app_%EC%99%80%EC%9D%B4%EC%96%B4%ED%94%84%EB%A0%88%EC%9E%84?node-id=153%3A545&t=Tis8XY4xI86Zp4HS-4"
-    };
+    private void Init(){
+        Log.i("ImageSwipeActivity","ImageSwipeActivity Init");
+
+        sliderViewPager = findViewById(R.id.sliderViewPager);
+        ArrayImages = getResources().obtainTypedArray(R.array.slide_img);
+
+    }
+
+    private TypedArray Images;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        sliderViewPager = findViewById(R.id.sliderViewPager);
-        layoutIndicator = findViewById(R.id.layoutIndicators);
 
         sliderViewPager.setOffscreenPageLimit(1);
-        sliderViewPager.setAdapter(new ImageSliderAdapter(this, images));
+        sliderViewPager= new ViewPager2((Context) this, (AttributeSet) Images);
 
         sliderViewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -35,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        setupIndicators(images.length);
+        setupIndicators(3);
     }
 
     private void setupIndicators(int count) {

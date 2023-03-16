@@ -14,9 +14,9 @@ import com.bumptech.glide.Glide;
 
 public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.MyViewHolder> {
     private Context context;
-    private TypedArray sliderImage;
+    private String[] sliderImage;
 
-    public ImageSliderAdapter(Context context, TypedArray sliderImage) {
+    public ImageSliderAdapter(Context context, String[] sliderImage) {
         this.context = context;
         this.sliderImage = sliderImage;
     }
@@ -31,7 +31,7 @@ public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
+        holder.bindSliderImage(sliderImage[position]);
     }
 
     @Override

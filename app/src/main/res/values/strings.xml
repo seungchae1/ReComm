@@ -5,4 +5,9 @@
         <item>naver.com</item>
         <item>daum.net</item>
     </string-array>
+    <array name="slide_img">
+        <item>@drawable/img1</item>
+        <item>@drawable/img2</item>
+        <item>@drawable/img3</item>
+    </array>
 </resources>

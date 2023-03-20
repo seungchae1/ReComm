@@ -16,6 +16,7 @@ public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.
     private Context context;
     private String[] sliderImage;
 
+
     public ImageSliderAdapter(Context context, String[] sliderImage) {
         this.context = context;
         this.sliderImage = sliderImage;
@@ -49,9 +50,7 @@ public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.
         }
 
         public void bindSliderImage(String imageURL) {
-            Glide.with(context)
-                    .load(imageURL)
-                    .into(mImageView);
+            mImageView.setImageResource(Integer.parseInt(imageURL));
         }
     }
 }

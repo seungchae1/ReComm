@@ -15,14 +15,15 @@ import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView mainImg;
+        ImageView mainImg, backImg;
         TextView rankText, titleText, writerText, categoryText, categoryText2;
         ConstraintLayout backLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            backLayout= (ConstraintLayout) itemView.findViewById(R.id.back_layout);
+            backLayout= (ConstraintLayout) itemView.findViewById(R.id.Mainlayout);
+            backImg = (ImageView) itemView.findViewById(R.id.back_imgv);
             mainImg = (ImageView) itemView.findViewById(R.id.main_imgv);
             rankText = (TextView) itemView.findViewById(R.id.rank_text);
             titleText = (TextView) itemView.findViewById(R.id.title_text);
@@ -55,19 +56,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, int position) {
         RecyclerViewItem item = mList.get(position);
 
-        holder.backLayout.setBackgroundResource(Integer.parseInt(item.getMainImg()));
-        holder.mainImg.setImageResource(Integer.parseInt(item.getMainImg()));
-        holder.rankText.setText(item.getRank());
-        holder.titleText.setText(item.getTitle());
-        holder.writerText.setText(item.getWriter());
-        holder.categoryText.setText(item.getCategory());
-        holder.categoryText2.setText(item.getCategory2());
+        holder.backImg.setBackgroundResource(R.drawable.testimg);
+        holder.mainImg.setImageResource(R.drawable.testimg);
+        holder.rankText.setText(item.getRank().toString());
+        holder.titleText.setText(item.getTitle().toString());
+        holder.writerText.setText(item.getWriter().toString());
+        holder.categoryText.setText(item.getCategory().toString());
+        holder.categoryText2.setText(item.getCategory2().toString());
     }
 
     @Override
     public int getItemCount() {
         return mList.size();
     }
-
 
 }

@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerViewAdapter = new RecyclerViewAdapter(mList);
         mRecyclerView.setAdapter(mRecyclerViewAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-       mRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)); //가로
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)); //가로
     }
 
     public void firstInit(){
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void addItem(String imgName,Integer rank, String titleText, String writerText, String category1, String category2){
         RecyclerViewItem item = new RecyclerViewItem();
-
+        
         item.setMainImg(imgName);
         item.setRank(rank);
         item.setTitle(titleText);

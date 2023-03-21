@@ -50,7 +50,7 @@ public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.
         }
 
         public void bindSliderImage(String imageURL) {
-            mImageView.setImageResource(Integer.parseInt(imageURL));
+            mImageView.setImageResource(R.drawable.img1);
         }
     }
 }

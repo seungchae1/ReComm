@@ -7,11 +7,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+
+import com.example.recomm.api.Book;
+import com.example.recomm.api.BookService;
+import com.example.recomm.api.ProfileAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
             "R.drawable.img3",
             "R.drawable.img3"
     };
-
 
 
     private RecyclerView mRecyclerView;
@@ -63,6 +76,28 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mRecyclerViewAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)); //가로
+
+
+        //api
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://book.interpark.com")
+                .addConverterFactory(GsonConverterFactory.create()) //Gson으로 변환
+                .build();
+        BookService bookService = retrofit.create(BookService.class);
+        bookService.getBestSellerBooks("45B4DD127DD3DD5D8A37DCB8810027A5266CC3A45E174E40D8E0A6117008717E")
+                .enqueue(new Callback<Book>() {
+                    @Override
+                    public void onResponse(Call<Book> call, Response<Book> response) {
+                        Book data = response.body();
+                        Log.d("mytag", data.toString());
+                        ListView listView =  findViewById(R.id.main_list);
+                        listView.setAdapter(new ProfileAdapter(data.item));
+                    }
+
+                    @Override
+                    public void onFailure(Call<Book> call, Throwable t) {
+
+                    }
+                });
     }
 
     public void firstInit(){

@@ -13,10 +13,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
-import com.example.recomm.api.Book;
-import com.example.recomm.api.BookService;
-import com.example.recomm.api.ProfileAdapter;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -42,11 +38,35 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private ArrayList<RecyclerViewItem> mList;
     private RecyclerViewAdapter mRecyclerViewAdapter;
+    private List<Book> BookList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //api
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://book.interpark.com")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
+        retrofitAPI.getData("45B4DD127DD3DD5D8A37DCB8810027A5266CC3A45E174E40D8E0A6117008717E","100","json").enqueue(new Callback<List<Book>>() {
+            @Override
+            public void onResponse(Call<List<Book>> call, Response<List<Book>> response) {
+                if(response.isSuccessful()){
+                    List<Book> data = response.body();
+                    Log.d("TEST", "성공!!");
+                    Log.d("TEST", data.get(0).getTitle());
+                    BookList = data;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Book>> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
 
         //viewpager2
         sliderViewPager = findViewById(R.id.sliderViewPager);
@@ -69,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         firstInit();
 
         for(int i=0;i<5;i++){
-            addItem("R.drawable.img1", i+1, "책제목", "저자", "카테고리1", "카테고리2");
+            addItem(BookList.get(i).getCoverLargeUrl(), i+1, BookList.get(i).getTitle(), "저자", "카테고리1", "카테고리2");
         }
 
         mRecyclerViewAdapter = new RecyclerViewAdapter(mList);
@@ -78,26 +98,6 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)); //가로
 
 
-        //api
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://book.interpark.com")
-                .addConverterFactory(GsonConverterFactory.create()) //Gson으로 변환
-                .build();
-        BookService bookService = retrofit.create(BookService.class);
-        bookService.getBestSellerBooks("45B4DD127DD3DD5D8A37DCB8810027A5266CC3A45E174E40D8E0A6117008717E")
-                .enqueue(new Callback<Book>() {
-                    @Override
-                    public void onResponse(Call<Book> call, Response<Book> response) {
-                        Book data = response.body();
-                        Log.d("mytag", data.toString());
-                        ListView listView =  findViewById(R.id.main_list);
-                        listView.setAdapter(new ProfileAdapter(data.item));
-                    }
-
-                    @Override
-                    public void onFailure(Call<Book> call, Throwable t) {
-
-                    }
-                });
     }
 
     public void firstInit(){

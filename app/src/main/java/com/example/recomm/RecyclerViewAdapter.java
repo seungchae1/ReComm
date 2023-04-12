@@ -11,9 +11,13 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+    private Context context;
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView mainImg, backImg;
         TextView rankText, titleText, writerText, categoryText, categoryText2;
@@ -35,8 +39,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private ArrayList<RecyclerViewItem> mList = null;
 
-    public RecyclerViewAdapter(ArrayList<RecyclerViewItem> mList) {
+    public RecyclerViewAdapter(ArrayList<RecyclerViewItem> mList, Context context) {
         this.mList = mList;
+        this.context = context;
     }
 
     // 아이템 뷰를 위한 뷰홀더 객체를 생성하여 리턴
@@ -56,8 +61,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, int position) {
         RecyclerViewItem item = mList.get(position);
 
-        holder.backImg.setBackgroundResource(R.drawable.testimg);
-        holder.mainImg.setImageResource(R.drawable.testimg);
+        //holder.backImg.setBackgroundResource(R.drawable.testimg);
+        Glide.with(context)
+                .load(item.getMainImg())
+                .into(holder.backImg);
+        //holder.mainImg.setImageResource(R.drawable.testimg);
+
+        Glide.with(context)
+                .load(item.getMainImg())
+                .into(holder.mainImg);
         holder.rankText.setText(item.getRank().toString());
         holder.titleText.setText(item.getTitle().toString());
         holder.writerText.setText(item.getWriter().toString());

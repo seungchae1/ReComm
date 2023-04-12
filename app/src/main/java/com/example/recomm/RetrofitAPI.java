@@ -10,4 +10,3 @@ public interface RetrofitAPI {
     @GET("/api/bestSeller.api")
     Call<List<Book>> getData(@Query("key") String key, @Query("categoryId") String categoryId, @Query("output") String output);
 }
-

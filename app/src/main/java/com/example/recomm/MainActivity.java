@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             addItem(BookList.get(i).getCoverLargeUrl(), i+1, BookList.get(i).getTitle(), "저자", "카테고리1", "카테고리2");
         }
 
-        mRecyclerViewAdapter = new RecyclerViewAdapter(mList);
+        mRecyclerViewAdapter = new RecyclerViewAdapter(mList, this);
         mRecyclerView.setAdapter(mRecyclerViewAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)); //가로

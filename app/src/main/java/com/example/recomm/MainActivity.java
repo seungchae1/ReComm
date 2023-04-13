@@ -59,9 +59,15 @@ public class MainActivity extends AppCompatActivity {
                     //recyclerview
                     firstInit();
 
-                    for(int i=0;i<10;i++){
+                    int imax = 5;
+                    int count = 0;
+                    for(int i=0;i<imax;i++){
                         Log.d("TESTURL",Booklist.getItem().get(i).getCoverLargeUrl());
-                        addItem(Booklist.getItem().get(i).getCoverLargeUrl(), i+1, Booklist.getItem().get(i).getTitle(), "저자", "카테고리1", "카테고리2");
+                        if(!(Booklist.getItem().get(i).getCoverLargeUrl().contains("/partner/"))){
+                            imax++;
+                            continue;
+                        }else{ count++;}
+                        addItem(Booklist.getItem().get(i).getCoverLargeUrl(), count, Booklist.getItem().get(i).getTitle(), "저자", "카테고리1", "카테고리2");
                     }
                     mRecyclerViewAdapter = new RecyclerViewAdapter(mList, MainActivity.this);
                     mRecyclerView.setAdapter(mRecyclerViewAdapter);

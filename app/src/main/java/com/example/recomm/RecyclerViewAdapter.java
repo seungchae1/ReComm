@@ -12,6 +12,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 
@@ -64,11 +65,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         //holder.backImg.setBackgroundResource(R.drawable.testimg);
         Glide.with(context)
                 .load(item.getMainImg())
+                .diskCacheStrategy(DiskCacheStrategy.NONE) // 캐시 삭제
+                .skipMemoryCache(true) // 캐시 삭제  
+                .placeholder(R.drawable.testimg) // 로딩중 이미지
+                .error(R.drawable.testimg) // 로드 실패 이미지
                 .into(holder.backImg);
         //holder.mainImg.setImageResource(R.drawable.testimg);
 
         Glide.with(context)
                 .load(item.getMainImg())
+                .diskCacheStrategy(DiskCacheStrategy.NONE) // 캐시 삭제
+                .skipMemoryCache(true) // 캐시 삭제
+                .placeholder(R.drawable.testimg) // 로딩중 이미지
+                .error(R.drawable.testimg) // 로드 실패 이미지
                 .into(holder.mainImg);
         holder.rankText.setText(item.getRank().toString());
         holder.titleText.setText(item.getTitle().toString());

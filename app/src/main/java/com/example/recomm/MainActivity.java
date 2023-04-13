@@ -11,10 +11,8 @@ import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import retrofit2.Call;
@@ -38,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private ArrayList<RecyclerViewItem> mList;
     private RecyclerViewAdapter mRecyclerViewAdapter;
-    private List<Book> BookList;
+    private BookList Booklist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,20 +49,31 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
-        retrofitAPI.getData("45B4DD127DD3DD5D8A37DCB8810027A5266CC3A45E174E40D8E0A6117008717E","100","json").enqueue(new Callback<List<Book>>() {
+        retrofitAPI.getData("45B4DD127DD3DD5D8A37DCB8810027A5266CC3A45E174E40D8E0A6117008717E","100","json").enqueue(new Callback<BookList>() {
             @Override
-            public void onResponse(Call<List<Book>> call, Response<List<Book>> response) {
+            public void onResponse(Call<BookList> call, Response<BookList> response) {
                 if(response.isSuccessful()){
-                    List<Book> data = response.body();
+                    Booklist=response.body();
                     Log.d("TEST", "성공!!");
-                    Log.d("TEST", data.get(0).getTitle());
-                    BookList = data;
+
+                    //recyclerview
+                    firstInit();
+
+                    for(int i=0;i<10;i++){
+                        Log.d("TESTURL",Booklist.getItem().get(i).getCoverLargeUrl());
+                        addItem(Booklist.getItem().get(i).getCoverLargeUrl(), i+1, Booklist.getItem().get(i).getTitle(), "저자", "카테고리1", "카테고리2");
+                    }
+                    mRecyclerViewAdapter = new RecyclerViewAdapter(mList, MainActivity.this);
+                    mRecyclerView.setAdapter(mRecyclerViewAdapter);
+                    mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+                    mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.HORIZONTAL, false)); //가로
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Book>> call, Throwable t) {
+            public void onFailure(Call<BookList> call, Throwable t) {
                 t.printStackTrace();
+                Log.d("TEST","실패");
             }
         });
 
@@ -85,17 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
         setupIndicators(images.length);
 
-        //recyclerview
-        firstInit();
 
-        for(int i=0;i<5;i++){
-            addItem(BookList.get(i).getCoverLargeUrl(), i+1, BookList.get(i).getTitle(), "저자", "카테고리1", "카테고리2");
-        }
-
-        mRecyclerViewAdapter = new RecyclerViewAdapter(mList, this);
-        mRecyclerView.setAdapter(mRecyclerViewAdapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)); //가로
 
 
     }

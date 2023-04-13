@@ -3,15 +3,10 @@ package com.example.recomm;
 import com.google.gson.annotations.SerializedName;
 
 public class Book {
-    @SerializedName("itemId")
     private int itemId;
-    @SerializedName("title")
     private String title;
-    @SerializedName("description")
     private String description;
-    @SerializedName("coverSmallUrl ")
     private String coverSmallUrl ;
-    @SerializedName("coverLargeUrl ")
     private String coverLargeUrl ;
 
     public int getItemId() {

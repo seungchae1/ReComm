@@ -6,9 +6,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private ArrayList<RecyclerViewItem> mList;
     private RecyclerViewAdapter mRecyclerViewAdapter;
+    private ImageButton top5Btn;
     private BookList Booklist;
 
     @Override
@@ -113,6 +117,15 @@ public class MainActivity extends AppCompatActivity {
 
         setupIndicators(images.length);
 
+        top5Btn = findViewById(R.id.top5Btn);
+        top5Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, RecommRank.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     //리콤 top5
@@ -168,4 +181,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
 }

@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                     Booklist=response.body();
                     Log.d("TEST", "성공!!");
 
-                    //recyclerview
+                    //recyclerview //리콤 top5
                     firstInit();
 
                     int imax = 5;
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //viewpager2
+        //viewpager2 //배너
         sliderViewPager = findViewById(R.id.sliderViewPager);
         layoutIndicator = findViewById(R.id.layoutIndicators);
 
@@ -105,10 +105,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //리콤 top5
     public void firstInit(){
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mList = new ArrayList<>();
     }
+    //리콤 top5
     public void addItem(String imgName,Integer rank, String titleText, String writerText, String category1, String category2){
         RecyclerViewItem item = new RecyclerViewItem();
         
@@ -121,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
 
         mList.add(item);
     }
-
+    //배너
     private void setupIndicators(int count) {
         ImageView[] indicators = new ImageView[count];
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
@@ -138,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
         }
         setCurrentIndicator(0);
     }
-
+    //배너
     private void setCurrentIndicator(int position) {
         int childCount = layoutIndicator.getChildCount();
         for (int i = 0; i < childCount; i++) {

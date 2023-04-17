@@ -26,13 +26,26 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager2 sliderViewPager;
     private LinearLayout layoutIndicator;
 
-    private String[] images = new String[] {
-            "R.drawable.img1",
-            "R.drawable.img3",
-            "R.drawable.img3"
+    private int[] images = new int[] {
+            R.drawable.img1,
+            R.drawable.img3,
+            R.drawable.img2
     };
-
-
+    private int[] images2 = new int[] {
+            0,
+            R.drawable.img3_2,
+            0
+    };
+    private String[] texts = new String[] {
+            "이 드라마가 \n" + "소설 원작이라고?",
+            "모든 것은 \n" + "용기의 문제다",
+            "영화를 만들어낸 토대가\n" + "이 한 권에 담겼다"
+    };
+    private String[] texts2 = new String[] {
+            "SBS ‘사랑의 온도’ 원작 소설을 \n" + "리콤에서 최저가로 알려드립니다.",
+            "따뜻함을 줄 신작 ‘미움 받을 용기'를\n" + "리콤에서 최저가로 알려드립니다.  ",
+            "이노우에 타케히코가 영화를 제작하는 과정을 \n" + "담은 글과 그림, 인터뷰 등에 관한 이야기를\n" + "리콤에서 최저가로 알려드립니다."
+    };
     private RecyclerView mRecyclerView;
     private ArrayList<RecyclerViewItem> mList;
     private RecyclerViewAdapter mRecyclerViewAdapter;
@@ -88,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         layoutIndicator = findViewById(R.id.layoutIndicators);
 
         sliderViewPager.setOffscreenPageLimit(1);
-        sliderViewPager.setAdapter(new ImageSliderAdapter(this, images));
+        sliderViewPager.setAdapter(new ImageSliderAdapter(this, images, texts, texts2, images2));
 
         sliderViewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -99,9 +112,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         setupIndicators(images.length);
-
-
-
 
     }
 

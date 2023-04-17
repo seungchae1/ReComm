@@ -6,20 +6,31 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
+import org.w3c.dom.Text;
 
 public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.MyViewHolder> {
     private Context context;
-    private String[] sliderImage;
+    private int[] sliderImage;
+    private String[] sliderText;
+    private String[] sliderText2;
+    private int[] sliderImage2;
 
 
-    public ImageSliderAdapter(Context context, String[] sliderImage) {
+    public ImageSliderAdapter(Context context, int[] sliderImage, String[] sliderText,String[] sliderText2, int[] sliderImage2) {
         this.context = context;
         this.sliderImage = sliderImage;
+        this.sliderText = sliderText;
+        this.sliderText2 = sliderText2;
+        this.sliderImage2 = sliderImage2;
     }
 
     @NonNull
@@ -32,7 +43,7 @@ public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.bindSliderImage(sliderImage[position]);
+        holder.bindSliderImage(sliderImage[position], sliderText[position], sliderText2[position], sliderImage2[position]);
     }
 
     @Override
@@ -42,15 +53,24 @@ public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView mImageView;
+        private androidx.constraintlayout.widget.ConstraintLayout mlin;
+        private TextView mTextView2;
+        private TextView mTextView;
+        private ImageView mimg;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            mImageView = itemView.findViewById(R.id.imageSlider);
+            mlin = itemView.findViewById(R.id.back);
+            mTextView = itemView.findViewById(R.id.text);
+            mTextView2 = itemView.findViewById(R.id.text2);
+            mimg = itemView.findViewById(R.id.img2);
         }
 
-        public void bindSliderImage(String imageURL) {
-            mImageView.setImageResource(R.drawable.img1);
+        public void bindSliderImage(int imageURL, String text, String text2, int img2) {
+            mlin.setBackgroundResource(imageURL);
+            mimg.setImageResource(img2);
+            mTextView.setText(text);
+            mTextView2.setText(text2);
         }
     }
 }

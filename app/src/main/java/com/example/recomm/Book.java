@@ -6,8 +6,25 @@ public class Book {
     private int itemId;
     private String title;
     private String description;
-    private String coverSmallUrl ;
     private String coverLargeUrl ;
+    private String author;
+    private String categoryName;
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
     public int getItemId() {
         return itemId;
@@ -31,14 +48,6 @@ public class Book {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getCoverSmallUrl() {
-        return coverSmallUrl;
-    }
-
-    public void setCoverSmallUrl(String coverSmallUrl) {
-        this.coverSmallUrl = coverSmallUrl;
     }
 
     public String getCoverLargeUrl() {

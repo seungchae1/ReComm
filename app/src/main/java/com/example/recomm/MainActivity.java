@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RetrofitAPI retrofitAPI = retrofit.create(RetrofitAPI.class);
-        retrofitAPI.getData("45B4DD127DD3DD5D8A37DCB8810027A5266CC3A45E174E40D8E0A6117008717E","100","json").enqueue(new Callback<BookList>() {
+        retrofitAPI.getData("45B4DD127DD3DD5D8A37DCB8810027A5266CC3A45E174E40D8E0A6117008717E","101","json").enqueue(new Callback<BookList>() {
             @Override
             public void onResponse(Call<BookList> call, Response<BookList> response) {
                 if(response.isSuccessful()){
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                             imax++;
                             continue;
                         }else{ count++;}
-                        addItem(Booklist.getItem().get(i).getCoverLargeUrl(), count, Booklist.getItem().get(i).getTitle(), "저자", "카테고리1", "카테고리2");
+                        addItem(Booklist.getItem().get(i).getCoverLargeUrl(), count, Booklist.getItem().get(i).getTitle(), Booklist.getItem().get(i).getAuthor(), Booklist.getItem().get(i).getCategoryName(), "카테고리2");
                     }
                     mRecyclerViewAdapter = new RecyclerViewAdapter(mList, MainActivity.this);
                     mRecyclerView.setAdapter(mRecyclerViewAdapter);

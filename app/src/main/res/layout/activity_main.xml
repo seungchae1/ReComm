@@ -193,7 +193,7 @@
                     android:layout_width="54dp"
                     android:layout_height="54dp"
                     android:layout_marginLeft="70dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="8dp"
                     android:background="@drawable/myrectangle">
 
                     <ImageView
@@ -240,14 +240,14 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/notosanskr_bold"
-                    android:text="1"
+                    android:text="2"
                     android:textSize="16sp" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="54dp"
                     android:layout_height="54dp"
                     android:layout_marginLeft="70dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="8dp"
                     android:background="@drawable/myrectangle">
 
                     <ImageView
@@ -294,14 +294,14 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/notosanskr_bold"
-                    android:text="1"
+                    android:text="3"
                     android:textSize="16sp" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="54dp"
                     android:layout_height="54dp"
                     android:layout_marginLeft="70dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="8dp"
                     android:background="@drawable/myrectangle">
 
                     <ImageView
@@ -372,8 +372,32 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager2"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="8dp"
+                android:layout_marginTop="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewPager2" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

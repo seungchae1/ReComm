@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             "이노우에 타케히코가 영화를 제작하는 과정을 \n" + "담은 글과 그림, 인터뷰 등에 관한 이야기를\n" + "리콤에서 최저가로 알려드립니다."
     };
     private RecyclerView mRecyclerView;
-    private ArrayList<RecyclerViewItem> mList;
+    private ArrayList<RecyclerViewItem> mList,mList2;
     private RecyclerViewAdapter mRecyclerViewAdapter;
     private ImageButton top5Btn;
     private BookList Booklist;
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("TEST", "성공!!");
 
                     //recyclerview //리콤 top5
-                    firstInit();
+                    firstInit(R.id.recyclerView);
 
                     int imax = 5;
                     int count = 0;
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                             imax++;
                             continue;
                         }else{ count++;}
-                        addItem(Booklist.getItem().get(i).getCoverLargeUrl(), count, Booklist.getItem().get(i).getTitle(), Booklist.getItem().get(i).getAuthor(), Booklist.getItem().get(i).getCategoryName(), "카테고리2");
+                        addItem(Booklist.getItem().get(i).getCoverLargeUrl(), count, Booklist.getItem().get(i).getTitle(), Booklist.getItem().get(i).getAuthor(), Booklist.getItem().get(i).getCategoryName(), "카테고리2", mList);
                     }
                     mRecyclerViewAdapter = new RecyclerViewAdapter(mList, MainActivity.this);
                     mRecyclerView.setAdapter(mRecyclerViewAdapter);
@@ -99,7 +99,33 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("TEST","실패");
             }
         });
+        retrofitAPI.getSearchData("45B4DD127DD3DD5D8A37DCB8810027A5266CC3A45E174E40D8E0A6117008717E","김호연", "author","json").enqueue(new Callback<BookList>() {
+            @Override
+            public void onResponse(Call<BookList> call, Response<BookList> response) {
+                if(response.isSuccessful()){
+                    Log.d("TEST", "성공!!");
 
+                    //recyclerview //리콤 top5
+                    firstInit(R.id.recyclerView2);
+
+                    int imax = 3;
+                    for(int i=0;i<imax;i++){
+                        if(response.body().getItem().get(i).getAuthor().equals("김호연")) addItem(response.body().getItem().get(i).getCoverLargeUrl(), 0, response.body().getItem().get(i).getTitle(), response.body().getItem().get(i).getAuthor(), "", "", mList2);
+                        else imax++;
+                    }
+                    mRecyclerViewAdapter = new RecyclerViewAdapter(mList2, MainActivity.this);
+                    mRecyclerView.setAdapter(mRecyclerViewAdapter);
+                    mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+                    mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.HORIZONTAL, false)); //가로
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BookList> call, Throwable t) {
+                t.printStackTrace();
+                Log.d("TEST","실패");
+            }
+        });
         //viewpager2 //배너
         sliderViewPager = findViewById(R.id.sliderViewPager);
         layoutIndicator = findViewById(R.id.layoutIndicators);
@@ -129,12 +155,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //리콤 top5
-    public void firstInit(){
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+    public void firstInit(int view){
+        mRecyclerView = (RecyclerView) findViewById(view);
         mList = new ArrayList<>();
+        mList2 = new ArrayList<>();
     }
     //리콤 top5
-    public void addItem(String imgName,Integer rank, String titleText, String writerText, String category1, String category2){
+    public void addItem(String imgName,Integer rank, String titleText, String writerText, String category1, String category2 , ArrayList<RecyclerViewItem> list){
         RecyclerViewItem item = new RecyclerViewItem();
         
         item.setMainImg(imgName);
@@ -144,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
         item.setCategory(category1);
         item.setCategory2(category2);
 
-        mList.add(item);
+        list.add(item);
     }
     //배너
     private void setupIndicators(int count) {

@@ -49,9 +49,11 @@ public class MainActivity extends AppCompatActivity {
             "따뜻함을 줄 신작 ‘미움 받을 용기'를\n" + "리콤에서 최저가로 알려드립니다.  ",
             "이노우에 타케히코가 영화를 제작하는 과정을 \n" + "담은 글과 그림, 인터뷰 등에 관한 이야기를\n" + "리콤에서 최저가로 알려드립니다."
     };
-    private RecyclerView mRecyclerView;
-    private ArrayList<RecyclerViewItem> mList,mList2;
+    private RecyclerView mRecyclerView, mRecyclerView2;
+    private ArrayList<RecyclerViewItem> mList;
     private RecyclerViewAdapter mRecyclerViewAdapter;
+    private ArrayList<Recomm_RecyclerViewItem> mList2;
+    private Recomm_RecyclerViewAdapter recommRecyclerViewAdapter;
     private ImageButton top5Btn;
     private BookList Booklist;
 
@@ -99,24 +101,25 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("TEST","실패");
             }
         });
-        retrofitAPI.getSearchData("45B4DD127DD3DD5D8A37DCB8810027A5266CC3A45E174E40D8E0A6117008717E","김호연", "author","json").enqueue(new Callback<BookList>() {
+        retrofitAPI.getSearchData("45B4DD127DD3DD5D8A37DCB8810027A5266CC3A45E174E40D8E0A6117008717E","김호연", "author","101","json").enqueue(new Callback<BookList>() {
             @Override
             public void onResponse(Call<BookList> call, Response<BookList> response) {
                 if(response.isSuccessful()){
                     Log.d("TEST", "성공!!");
 
                     //recyclerview //리콤 top5
-                    firstInit(R.id.recyclerView2);
-
-                    int imax = 3;
+                    secondInit(R.id.recyclerView2);
+                    BookList b = response.body();
+                    int imax = 5;
                     for(int i=0;i<imax;i++){
-                        if(response.body().getItem().get(i).getAuthor().equals("김호연")) addItem(response.body().getItem().get(i).getCoverLargeUrl(), 0, response.body().getItem().get(i).getTitle(), response.body().getItem().get(i).getAuthor(), "", "", mList2);
-                        else imax++;
+                        if(!(b.getItem().get(i).getAuthor().equals("김호연"))){
+                            continue;
+                        }addItem2(b.getItem().get(i).getCoverLargeUrl(), b.getItem().get(i).getTitle(), b.getItem().get(i).getAuthor(), mList2);
                     }
-                    mRecyclerViewAdapter = new RecyclerViewAdapter(mList2, MainActivity.this);
-                    mRecyclerView.setAdapter(mRecyclerViewAdapter);
-                    mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-                    mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.HORIZONTAL, false)); //가로
+                    recommRecyclerViewAdapter = new Recomm_RecyclerViewAdapter(mList2, MainActivity.this);
+                    mRecyclerView2.setAdapter(recommRecyclerViewAdapter);
+                    mRecyclerView2.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+                    mRecyclerView2.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.HORIZONTAL, false)); //가로
                 }
             }
 
@@ -158,6 +161,10 @@ public class MainActivity extends AppCompatActivity {
     public void firstInit(int view){
         mRecyclerView = (RecyclerView) findViewById(view);
         mList = new ArrayList<>();
+    }
+    //사용자 맞춤 추천
+    public void secondInit(int view){
+        mRecyclerView2 = (RecyclerView) findViewById(view);
         mList2 = new ArrayList<>();
     }
     //리콤 top5
@@ -170,6 +177,16 @@ public class MainActivity extends AppCompatActivity {
         item.setWriter(writerText);
         item.setCategory(category1);
         item.setCategory2(category2);
+
+        list.add(item);
+    }
+    //사용자 맞춤 추천
+    public void addItem2(String imgName, String titleText, String writerText, ArrayList<Recomm_RecyclerViewItem> list){
+        Recomm_RecyclerViewItem item = new Recomm_RecyclerViewItem();
+
+        item.setMainImg(imgName);
+        item.setTitle(titleText);
+        item.setWriter(writerText);
 
         list.add(item);
     }

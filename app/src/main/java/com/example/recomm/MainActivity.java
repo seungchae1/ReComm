@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +28,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ViewPager2 sliderViewPager;
-    private LinearLayout layoutIndicator;
+    private ViewPager2 sliderViewPager, sliderViewPager2;
+    private LinearLayout layoutIndicator, layoutIndicator2;
 
     private int[] images = new int[] {
             R.drawable.img1,
@@ -49,14 +51,36 @@ public class MainActivity extends AppCompatActivity {
             "따뜻함을 줄 신작 ‘미움 받을 용기'를\n" + "리콤에서 최저가로 알려드립니다.  ",
             "이노우에 타케히코가 영화를 제작하는 과정을 \n" + "담은 글과 그림, 인터뷰 등에 관한 이야기를\n" + "리콤에서 최저가로 알려드립니다."
     };
+    private int[] images_2= new int[]{
+            R.drawable.testimg,
+            R.drawable.testimg,
+            R.drawable.testimg
+    };
+    private int[] images2_2= new int[]{
+            R.drawable.testimg,
+            0,
+            0
+    };
+    private String[] texts_2= new String[]{
+            "사건이 발생하고\n" + "추리가 시작되었다. ",
+            "나 있는 그대로 참 좋다",
+            "착하게 그러나 단호하게"
+    };
+    private String[] texts2_2= new String[]{
+            "",
+            "자신이 얼마나 아름다운지 모르는 \n나에게 필요한 마음 주문",
+            "당신의 착함을 이용하는 사람들에게 \n먹이는 한 방"
+    };
+
     private RecyclerView mRecyclerView, mRecyclerView2;
     private ArrayList<RecyclerViewItem> mList;
     private RecyclerViewAdapter mRecyclerViewAdapter;
     private ArrayList<Recomm_RecyclerViewItem> mList2;
     private Recomm_RecyclerViewAdapter recommRecyclerViewAdapter;
     private ImageButton top5Btn;
-    private BookList Booklist;
+    private LinearLayout imgl, textl;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<BookList> call, Response<BookList> response) {
                 if(response.isSuccessful()){
-                    Booklist=response.body();
+                    BookList  Booklist=response.body();
                     Log.d("TEST", "성공!!");
 
                     //recyclerview //리콤 top5
@@ -140,12 +164,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
-                setCurrentIndicator(position);
+                setCurrentIndicator(layoutIndicator,position);
             }
         });
+        setupIndicators(layoutIndicator,images.length);
 
-        setupIndicators(images.length);
+        //viewpager2 //광고 슬라이드
+        sliderViewPager2 = findViewById(R.id.viewPager2);
+        layoutIndicator2 = findViewById(R.id.linearLayout4);
 
+        sliderViewPager2.setOffscreenPageLimit(1);
+        sliderViewPager2.setAdapter(new Viewpager2Adapter2(images_2, images2_2, texts_2, texts2_2));
+
+        sliderViewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                setCurrentIndicator(layoutIndicator2,position);
+            }
+        });
+        setupIndicators(layoutIndicator2,images2.length);
+
+        //top5 더보기 버튼
         top5Btn = findViewById(R.id.top5Btn);
         top5Btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -191,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
         list.add(item);
     }
     //배너
-    private void setupIndicators(int count) {
+    private void setupIndicators(LinearLayout lin, int count) {
         ImageView[] indicators = new ImageView[count];
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -203,15 +243,15 @@ public class MainActivity extends AppCompatActivity {
             indicators[i].setImageDrawable(ContextCompat.getDrawable(this,
                     R.drawable.slider2));
             indicators[i].setLayoutParams(params);
-            layoutIndicator.addView(indicators[i]);
+            lin.addView(indicators[i]);
         }
-        setCurrentIndicator(0);
+        setCurrentIndicator(lin,0);
     }
     //배너
-    private void setCurrentIndicator(int position) {
-        int childCount = layoutIndicator.getChildCount();
+    private void setCurrentIndicator(LinearLayout lin, int position) {
+        int childCount = lin.getChildCount();
         for (int i = 0; i < childCount; i++) {
-            ImageView imageView = (ImageView) layoutIndicator.getChildAt(i);
+            ImageView imageView = (ImageView) lin.getChildAt(i);
             if (i == position) {
                 imageView.setImageDrawable(ContextCompat.getDrawable(
                         this,

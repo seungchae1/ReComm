@@ -5,13 +5,8 @@
     android:layout_height="match_parent"
     android:contentDescription="@string/app_name">
 
-    <LinearLayout
-        android:id="@+id/cardView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
-
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginLeft="15dp"
@@ -19,10 +14,11 @@
             android:layout_marginRight="15dp"
             android:backgroundTint="#FBFBFB"
             app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"></androidx.cardview.widget.CardView>
-    </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/textlin"
@@ -68,8 +64,8 @@
             android:layout_width="70dp"
             android:layout_height="90dp"
             android:layout_marginRight="8dp"
-            app:cardCornerRadius="20dp"
-            android:outlineProvider="none"
+            app:cardCornerRadius="7dp"
+            app:cardElevation="0dp"
             android:backgroundTint="@android:color/transparent">
 
             <ImageView
@@ -85,9 +81,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="70dp"
             android:layout_height="90dp"
-            app:cardCornerRadius="20dp"
-            android:backgroundTint="@android:color/transparent"
-            android:outlineProvider="none">
+            app:cardCornerRadius="7dp"
+            app:cardElevation="0dp"
+            android:backgroundTint="@android:color/transparent">
 
             <ImageView
                 android:id="@+id/img2"

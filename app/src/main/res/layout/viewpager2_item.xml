@@ -5,96 +5,92 @@
     android:layout_height="match_parent"
     android:contentDescription="@string/app_name">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView2"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="15dp"
-            android:backgroundTint="#FBFBFB"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:backgroundTint="#FBFBFB"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></androidx.cardview.widget.CardView>
 
 
-    <LinearLayout
-        android:id="@+id/textlin"
+    <TextView
+        android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/notosanskr_bold"
+        android:text="나 있는 그대로 참 좋다"
+        android:textColor="#4B4B4B"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/text2"
+        app:layout_constraintEnd_toEndOf="@+id/cardView2"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="@+id/cardView2"
         app:layout_constraintTop_toTopOf="@+id/cardView2"
-        app:layout_constraintVertical_bias="0.5">
+        app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:id="@+id/text1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/notosanskr_bold"
-            android:text="사건이 발생하고\n추리가 시작되었다."
-            android:textColor="#4B4B4B"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/text2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/notosans_kr_regular"
-            android:textSize="11sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/imglin"
+    <TextView
+        android:id="@+id/text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/notosans_kr_regular"
+        android:text="당신의 착함을 이용하는 사람들에게\n 먹이는 한 방"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
         app:layout_constraintEnd_toEndOf="@+id/cardView2"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="@+id/cardView2"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/text1"
+        app:layout_constraintTop_toTopOf="@+id/cardView2"
+        app:layout_constraintVertical_bias="1.0" />
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="70dp"
-            android:layout_height="90dp"
-            android:layout_marginRight="8dp"
-            app:cardCornerRadius="7dp"
-            app:cardElevation="0dp"
-            android:backgroundTint="@android:color/transparent">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
+        android:layout_width="70dp"
+        android:layout_height="90dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@android:color/transparent"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+        app:layout_constraintEnd_toStartOf="@+id/cardView4">
 
-            <ImageView
-                android:id="@+id/img1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/testimg"/>
-        </androidx.cardview.widget.CardView>
+        <ImageView
+            android:id="@+id/img1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/testimg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="70dp"
-            android:layout_height="90dp"
-            app:cardCornerRadius="7dp"
-            app:cardElevation="0dp"
-            android:backgroundTint="@android:color/transparent">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView4"
+        android:layout_width="70dp"
+        android:layout_height="90dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@android:color/transparent"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="@+id/cardView2">
 
-            <ImageView
-                android:id="@+id/img2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/testimg"/>
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/img2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/testimg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

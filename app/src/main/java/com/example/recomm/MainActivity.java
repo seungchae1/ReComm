@@ -51,12 +51,12 @@ public class MainActivity extends AppCompatActivity {
             "따뜻함을 줄 신작 ‘미움 받을 용기'를\n" + "리콤에서 최저가로 알려드립니다.  ",
             "이노우에 타케히코가 영화를 제작하는 과정을 \n" + "담은 글과 그림, 인터뷰 등에 관한 이야기를\n" + "리콤에서 최저가로 알려드립니다."
     };
-    private int[] images_2= new int[]{
+    private int[] images2_2= new int[]{
             R.drawable.testimg,
             R.drawable.testimg,
             R.drawable.testimg
     };
-    private int[] images2_2= new int[]{
+    private int[] images_2= new int[]{
             R.drawable.testimg,
             0,
             0

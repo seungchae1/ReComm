@@ -74,7 +74,7 @@ public class Login2 extends AppCompatActivity {
             }
         });
 
-        DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference(); //fire base
         DatabaseReference db = mRootRef.child("user");
 
         String userPass = edit2.getText().toString();
@@ -94,7 +94,7 @@ public class Login2 extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot s : snapshot.getChildren()) {
-                            if(s.getKey().equals("g"+edit.getText().toString())){
+                            if(s.getKey().equals(myemail+edit.getText().toString())){
                                 id =true;
                                 if(s.child("pass").getValue().equals(edit2.getText().toString())){
                                     pass=true;

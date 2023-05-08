@@ -62,7 +62,6 @@ public class Viewpager2Adapter2 extends RecyclerView.Adapter<Viewpager2Adapter2.
             mimg.setImageResource(img);
             mimg2.setImageResource(img2);
             if(img == 0){
-                mimg2.
             }
             mTextView.setText(text);
             mTextView2.setText(text2);

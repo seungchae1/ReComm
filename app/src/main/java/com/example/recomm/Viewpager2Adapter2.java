@@ -61,8 +61,6 @@ public class Viewpager2Adapter2 extends RecyclerView.Adapter<Viewpager2Adapter2.
         public void bindSliderImage(int img, int img2, String text, String text2) {
             mimg.setImageResource(img);
             mimg2.setImageResource(img2);
-            if(img == 0){
-            }
             mTextView.setText(text);
             mTextView2.setText(text2);
         }

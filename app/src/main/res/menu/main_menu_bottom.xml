@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navagation_category"
+        android:enabled="true"
+        android:icon="@drawable/navigation_category"
+        android:title="카테고리"/>
+    <item
+        android:id="@+id/navagation_search"
+        android:enabled="true"
+        android:icon="@drawable/navigation_search"
+        android:title="검색"/>
+    <item
+        android:id="@+id/navagation_home"
+        android:enabled="true"
+        android:icon="@drawable/navigation_home"
+        android:title="홈"/>
+    <item
+        android:id="@+id/navagation_mybook"
+        android:enabled="true"
+        android:icon="@drawable/navigation_mybook"
+        android:title="내 책장"/>
+    <item
+        android:id="@+id/navagation_mypage"
+        android:enabled="true"
+        android:icon="@drawable/navigation_mypage"
+        android:title="카테고리"/>
+</menu>

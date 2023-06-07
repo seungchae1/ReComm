@@ -2,8 +2,12 @@ package com.example.recomm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
@@ -13,6 +17,7 @@ import org.w3c.dom.Text;
 
 public class JoinQuestion extends AppCompatActivity {
     HorizontalScrollView hori;
+    TextView btn;
     String selCategory[] = {
             "가정 살림", "IT 모바일", "에세이", "여행", "역사", "시리즈", "정치",
             "인물", "소설/시/희극", "잡지", "취미", "인문", "외국어 사전", "유아/어린이", "청소년", "스포츠/건강",
@@ -23,6 +28,7 @@ public class JoinQuestion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join_question);
         hori = findViewById(R.id.horiView);
+        btn = findViewById(R.id.textView2);
         LinearLayout linear = new LinearLayout(this);
         linear.setOrientation(LinearLayout.VERTICAL);
         linear.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -48,5 +54,12 @@ public class JoinQuestion extends AppCompatActivity {
             linear2.addView(tv);
         }
         hori.addView(linear);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

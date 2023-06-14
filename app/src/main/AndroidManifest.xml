@@ -17,6 +17,9 @@
         android:theme="@style/Theme.ReComm"
         tools:targetApi="31">
         <activity
+            android:name=".BookDetail"
+            android:exported="false" />
+        <activity
             android:name=".Search"
             android:exported="true">
             <intent-filter>

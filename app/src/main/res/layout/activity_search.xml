@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Search">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="맞춤 검색"
+        android:fontFamily="@font/notosanskr_bold"
+        android:textColor="#494949"
+        android:layout_marginTop="52dp"
+        android:layout_marginLeft="16dp"
+        android:textSize="20dp"/>
+
+    <!--  search bar  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <EditText
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:hint="검색어를 입력하세요."
+            android:textColorHint="#D1D1D1"/>
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/serach"/>
+        
+    </LinearLayout>
+
+    <!--  인기 검색어  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22dp"
+            android:text="인기 검색어"
+            android:fontFamily="@font/notosanskr_bold"
+            android:textColor="#494949"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12 : 12"
+            android:textColor="#D1D1D1"
+            android:textSize="12dp"
+            android:layout_marginLeft="8dp"/>
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginLeft="7dp"
+            android:src="@drawable/reload"/>
+
+    </LinearLayout>
+
+</LinearLayout>

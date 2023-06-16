@@ -102,6 +102,50 @@
             android:textColor="#A4A4A4"/>
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/infoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="작품 정보"
+            android:layout_margin="16dp"
+            android:onClick="toggleAccordion"
+            />
+
+        <LinearLayout
+            android:id="@+id/accordionLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/infoButton"
+            android:visibility="gone"
+            >
+
+            <Button
+                android:id="@+id/accordionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="책 소개"
+                android:layout_margin="8dp"
+                android:onClick="toggleAccordion"
+                />
+
+            <TextView
+                android:id="@+id/bookInfoTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="책 정보"
+                android:padding="16dp"
+                android:visibility="gone"
+                />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
     <LinearLayout
         android:id="@+id/acc"
         android:layout_width="match_parent"
@@ -177,6 +221,8 @@
 
     </LinearLayout>
 
+
+
     <!--  하단 고정바  -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -188,10 +234,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="구매하러 갈까요?"
             android:fontFamily="@font/notosans_kr_medium"
+            android:text="구매하러 갈까요?"
             android:textColor="@color/black"
-            android:textSize="16dp"/>
+            android:textSize="16dp" />
 
         <LinearLayout
             android:layout_width="match_parent"

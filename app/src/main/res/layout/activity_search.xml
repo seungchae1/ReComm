@@ -41,6 +41,7 @@
 
     <!--  인기 검색어  -->
     <!--  아놔 슬라이드라니...  -->
+    <!--  https://github.com/singhangadin/android-toggle 토글 참고  -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -140,7 +141,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14dp"
-                android:text="오"/>
+                android:text="오" />
 
         </LinearLayout>
 
@@ -156,13 +157,13 @@
                 android:layout_height="wrap_content"
                 android:textSize="14dp"
                 android:text="4"
-                android:textColor="#BC2638"/>
+                android:textColor="#BC2638" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14dp"
-                android:text="오늘 "/>
+                android:text="오늘 " />
 
         </LinearLayout>
 
@@ -178,13 +179,14 @@
                 android:layout_height="wrap_content"
                 android:textSize="14dp"
                 android:text="5"
-                android:textColor="#BC2638"/>
+                android:textColor="#BC2638"
+                android:contentDescription="."/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14dp"
-                android:text="오늘 밤 세계에서 "/>
+                android:text="오늘 밤 세계에서 " />
 
         </LinearLayout>
 
@@ -203,8 +205,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16dp"
-            android:textcolor="#49494ㅇ9"
-            android:text="추천 검색어 "/>
+            android:textColor="#494949"
+            android:text="추천 검색어 " />
 
         <!--   추가     -->
         <LinearLayout
@@ -213,11 +215,102 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:textcolor="#494949"
-                android:text="자기계발 "/>
+                android:layout_width="79dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/search_btn"
+                android:fontFamily="@font/notosans_kr_regular"
+                android:includeFontPadding="false"
+                android:paddingLeft="16dp"
+                android:paddingTop="9dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="5dp"
+                android:text="자기계발"
+                android:textColor="#494949"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_width="79dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/search_btn"
+                android:fontFamily="@font/notosans_kr_regular"
+                android:includeFontPadding="false"
+                android:paddingLeft="16dp"
+                android:paddingTop="9dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="5dp"
+                android:text="별자리 운세"
+                android:textColor="#494949"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/search_btn"
+                android:fontFamily="@font/notosans_kr_regular"
+                android:includeFontPadding="false"
+                android:paddingLeft="16dp"
+                android:paddingTop="9dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="5dp"
+                android:text="달달한 드래곤"
+                android:textColor="#494949"
+                android:textSize="12dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="79dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/search_btn"
+                android:fontFamily="@font/notosans_kr_regular"
+                android:includeFontPadding="false"
+                android:paddingLeft="16dp"
+                android:paddingTop="9dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="5dp"
+                android:text="자기계발"
+                android:textColor="#494949"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_width="79dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/search_btn"
+                android:fontFamily="@font/notosans_kr_regular"
+                android:includeFontPadding="false"
+                android:paddingLeft="16dp"
+                android:paddingTop="9dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="5dp"
+                android:text="별자리 운세"
+                android:textColor="#494949"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/search_btn"
+                android:fontFamily="@font/notosans_kr_regular"
+                android:includeFontPadding="false"
+                android:paddingLeft="16dp"
+                android:paddingTop="9dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="5dp"
+                android:text="달달한 드래곤"
+                android:textColor="#494949"
+                android:textSize="12dp" />
 
         </LinearLayout>
 

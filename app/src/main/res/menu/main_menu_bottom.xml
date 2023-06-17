@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/navagation_category"
         android:enabled="true"
@@ -24,5 +25,5 @@
         android:id="@+id/navagation_mypage"
         android:enabled="true"
         android:icon="@drawable/navigation_mypage"
-        android:title="카테고리"/>
+        android:title="마이페이지"/>
 </menu>

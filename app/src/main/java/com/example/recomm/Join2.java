@@ -85,7 +85,7 @@ public class Join2 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent getintent = getIntent();
                 User user = (User)getintent.getSerializableExtra("user");
-                user.setPass(edit.getText().toString());
+                //user.setPass(edit.getText().toString());
                 Intent intent = new Intent(getApplicationContext(), Join3.class);
                 intent.putExtra("user", user);
                 String pass1 = edit.getText().toString();

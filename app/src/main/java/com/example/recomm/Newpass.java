@@ -42,13 +42,13 @@ public class Newpass extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 0:
-                        userM=edit.getText().toString().concat("g");
+                        userM="g".concat(edit.getText().toString());
                         break;
                     case 1:
-                        userM=edit.getText().toString().concat("n");
+                        userM="n".concat(edit.getText().toString());
                         break;
                     case 2:
-                        userM=edit.getText().toString().concat("d");
+                        userM="d".concat(edit.getText().toString());
                         break;
                 }
             }
@@ -85,7 +85,7 @@ public class Newpass extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(input){
-                    Intent intent = new Intent(getApplicationContext(), Join2.class);
+                    Intent intent = new Intent(getApplicationContext(), Newpass2.class);
                     intent.putExtra("userM",userM);
                     startActivity(intent);
                 }

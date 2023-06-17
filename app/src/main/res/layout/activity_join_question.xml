@@ -72,6 +72,19 @@
         app:layout_constraintTop_toBottomOf="@+id/horiView"
         app:layout_constraintVertical_bias="0.0" />
 
+    <GridView
+        android:id="@+id/genreGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="2"
+        android:padding="16dp"
+        android:listSelector="@android:color/transparent"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
         android:id="@+id/imageButton"

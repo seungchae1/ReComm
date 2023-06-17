@@ -25,17 +25,12 @@
         android:padding="16dp">
 
         <EditText
-            android:layout_width="340dp"
+            android:layout_width="365dp"
             android:layout_height="wrap_content"
             android:hint="검색어를 입력하세요."
             android:textColorHint="#D1D1D1"
+            android:drawableEnd="@drawable/serach"
             android:paddingBottom="15dp"/>
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/serach"/>
 
     </LinearLayout>
 
@@ -70,6 +65,44 @@
             android:layout_marginTop="19dp"
             android:layout_marginLeft="7dp"
             android:src="@drawable/reload"/>
+
+        <!-- 토글 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="14dp"
+            tools:context=".Search">
+
+            <LinearLayout
+                android:id="@+id/xmlLinear"
+                android:layout_width="78dp"
+                android:layout_height="21dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:id="@+id/to"
+                    android:layout_width="39dp"
+                    android:layout_height="21dp"
+                    android:text="오늘"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="12dp"
+                    android:background="@drawable/toggle_on"
+                    tools:ignore="RtlSymmetry" />
+
+                <TextView
+                    android:id="@+id/yes"
+                    android:layout_width="39dp"
+                    android:layout_height="21dp"
+                    android:text="어제"
+                    android:background="@drawable/toggle_off"
+                    android:gravity="center"
+                    android:textSize="12dp"
+                    android:textColor="#A4A4A4"/>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 
@@ -222,7 +255,7 @@
                 android:fontFamily="@font/notosans_kr_regular"
                 android:includeFontPadding="false"
                 android:paddingLeft="16dp"
-                android:paddingTop="9dp"
+                android:paddingTop="8dp"
                 android:paddingRight="16dp"
                 android:paddingBottom="5dp"
                 android:text="자기계발"
@@ -230,14 +263,14 @@
                 android:textSize="12dp" />
 
             <TextView
-                android:layout_width="79dp"
+                android:layout_width="94dp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="8dp"
                 android:background="@drawable/search_btn"
                 android:fontFamily="@font/notosans_kr_regular"
                 android:includeFontPadding="false"
-                android:paddingLeft="16dp"
-                android:paddingTop="9dp"
+                android:paddingLeft="17dp"
+                android:paddingTop="8dp"
                 android:paddingRight="16dp"
                 android:paddingBottom="5dp"
                 android:text="별자리 운세"
@@ -245,14 +278,14 @@
                 android:textSize="12dp" />
 
             <TextView
-                android:layout_width="100dp"
-                android:layout_height="35dp"
+                android:layout_width="102dp"
+                android:layout_height="match_parent"
                 android:layout_marginRight="8dp"
                 android:background="@drawable/search_btn"
                 android:fontFamily="@font/notosans_kr_regular"
                 android:includeFontPadding="false"
                 android:paddingLeft="16dp"
-                android:paddingTop="9dp"
+                android:paddingTop="8dp"
                 android:paddingRight="16dp"
                 android:paddingBottom="5dp"
                 android:text="달달한 드래곤"
@@ -268,47 +301,62 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="79dp"
+                android:layout_width="93dp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="8dp"
                 android:background="@drawable/search_btn"
                 android:fontFamily="@font/notosans_kr_regular"
                 android:includeFontPadding="false"
                 android:paddingLeft="16dp"
-                android:paddingTop="9dp"
+                android:paddingTop="6dp"
                 android:paddingRight="16dp"
                 android:paddingBottom="5dp"
-                android:text="자기계발"
+                android:text="김호영 작가"
                 android:textColor="#494949"
                 android:textSize="12dp" />
 
             <TextView
-                android:layout_width="79dp"
+                android:layout_width="96dp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="8dp"
                 android:background="@drawable/search_btn"
                 android:fontFamily="@font/notosans_kr_regular"
                 android:includeFontPadding="false"
-                android:paddingLeft="16dp"
-                android:paddingTop="9dp"
+                android:paddingLeft="18dp"
+                android:paddingTop="6dp"
                 android:paddingRight="16dp"
                 android:paddingBottom="5dp"
-                android:text="별자리 운세"
+                android:text="베스트 셀러"
                 android:textColor="#494949"
                 android:textSize="12dp" />
 
             <TextView
-                android:layout_width="100dp"
-                android:layout_height="35dp"
+                android:layout_width="55dp"
+                android:layout_height="30dp"
                 android:layout_marginRight="8dp"
                 android:background="@drawable/search_btn"
                 android:fontFamily="@font/notosans_kr_regular"
                 android:includeFontPadding="false"
                 android:paddingLeft="16dp"
-                android:paddingTop="9dp"
+                android:paddingTop="6dp"
                 android:paddingRight="16dp"
                 android:paddingBottom="5dp"
-                android:text="달달한 드래곤"
+                android:text="육아"
+                android:textColor="#494949"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_width="65dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/search_btn"
+                android:fontFamily="@font/notosans_kr_regular"
+                android:includeFontPadding="false"
+                android:paddingLeft="16dp"
+                android:paddingTop="6dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="5dp"
+                android:text="로맨스"
                 android:textColor="#494949"
                 android:textSize="12dp" />
 

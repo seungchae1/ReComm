@@ -6,13 +6,23 @@ import androidx.fragment.app.Fragment;
 
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+
+import java.net.URI;
+import java.net.URL;
+
+import retrofit2.http.Url;
 
 public class BookDetail extends Fragment {
 
@@ -21,6 +31,9 @@ public class BookDetail extends Fragment {
     private RelativeLayout recommendLayout;
     private RelativeLayout myReviewLayout;
     private LinearLayout textBox; // 이거는 뭐가 잘못된 건지 보이면 안되는데 보여서 쓰는 코드니까 무시하면돼!!!
+
+    private ImageView img, img2;
+    private TextView title;
 
     private View view;
 
@@ -33,8 +46,20 @@ public class BookDetail extends Fragment {
         recommendLayout = view.findViewById(R.id.recommendLayout);
         myReviewLayout = view.findViewById(R.id.myReviewLayout);
         textBox = view.findViewById(R.id.textBox); // 무시히ㅏ면돼!!!
-
-
+        img = view.findViewById(R.id.main_img);
+        img2 = view.findViewById(R.id.back_img);
+        Bundle bundle = new Bundle();
+        bundle = getArguments();
+        title = view.findViewById(R.id.title);
+        if(bundle != null){
+            Glide.with(this)
+                .load(bundle.getString("img"))
+                .into(img);
+            Glide.with(this)
+                    .load(bundle.getString("img"))
+                    .into(img2);
+            title.setText(bundle.getString("title"));
+        }
         // 작품 정보 탭뷰
         CustomTab customTab = new CustomTab();
         customTab.init();

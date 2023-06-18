@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.recomm.Adapter.ImageSliderAdapter;
 import com.example.recomm.Adapter.Recomm_RecyclerViewAdapter;
@@ -24,6 +25,7 @@ import com.example.recomm.Adapter.Recomm_RecyclerViewItem;
 import com.example.recomm.Adapter.RecyclerViewAdapter;
 import com.example.recomm.Adapter.RecyclerViewItem;
 import com.example.recomm.Adapter.Viewpager2Adapter2;
+import com.example.recomm.Model.User;
 import com.example.recomm.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;
@@ -88,13 +90,23 @@ public class Home extends Fragment {
     private ImageButton top5Btn;
 
     private FragmentHomeBinding binding;
+    private User user;
+
+    private TextView userName, WriterName;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        userName = view.findViewById(R.id.username);
+        WriterName = view.findViewById(R.id.writername);
+
         binding = FragmentHomeBinding.bind(view);
+        Bundle bundle = getArguments();
+        if(bundle != null) {
+            userName.setText(bundle.getString("name"));
+        }
 
         //api
         Retrofit retrofit = new Retrofit.Builder()
@@ -142,7 +154,7 @@ public class Home extends Fragment {
                 if(response.isSuccessful()){
                     Log.d("TEST", "성공!!");
 
-                    //recyclerview //리콤 top5
+                    //recyclerview //사용자 맞춤 작가 추천
                     secondInit(R.id.recyclerView2);
                     BookList b = response.body();
                     int imax = 5;
@@ -152,7 +164,7 @@ public class Home extends Fragment {
                         }addItem2(b.getItem().get(i).getCoverLargeUrl(), b.getItem().get(i).getTitle(), b.getItem().get(i).getAuthor(), mList2);
                     }
                     mRecyclerView2 = binding.recyclerView2;
-                    recommRecyclerViewAdapter = new Recomm_RecyclerViewAdapter(mList2, getActivity());
+                    recommRecyclerViewAdapter = new Recomm_RecyclerViewAdapter(mList2, getActivity(), getParentFragmentManager());
                     mRecyclerView2.setAdapter(recommRecyclerViewAdapter);
                     mRecyclerView2.setLayoutManager(new LinearLayoutManager(getActivity()));
                     mRecyclerView2.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false)); //가로
@@ -205,6 +217,7 @@ public class Home extends Fragment {
                 getParentFragmentManager().beginTransaction().replace(R.id.frame, new RecommRank()).commit();
             }
         });
+
 
         return view;
     }

@@ -9,16 +9,20 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.recomm.BookDetail;
 import com.example.recomm.R;
+import com.example.recomm.RecommRank;
 
 import java.util.ArrayList;
 
 public class Recomm_RecyclerViewAdapter  extends RecyclerView.Adapter<Recomm_RecyclerViewAdapter.ViewHolder> {
     private Context context;
+    FragmentManager fragmentManager;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView mainImg;
@@ -37,9 +41,10 @@ public class Recomm_RecyclerViewAdapter  extends RecyclerView.Adapter<Recomm_Rec
 
     private ArrayList<Recomm_RecyclerViewItem> mList = null;
 
-    public Recomm_RecyclerViewAdapter(ArrayList<Recomm_RecyclerViewItem> mList, Context context) {
+    public Recomm_RecyclerViewAdapter(ArrayList<Recomm_RecyclerViewItem> mList, Context context, FragmentManager fragmentManager) {
         this.mList = mList;
         this.context = context;
+        this.fragmentManager = fragmentManager;
     }
 
     // 아이템 뷰를 위한 뷰홀더 객체를 생성하여 리턴
@@ -51,6 +56,7 @@ public class Recomm_RecyclerViewAdapter  extends RecyclerView.Adapter<Recomm_Rec
 
         View view = inflater.inflate(R.layout.recomm_recycler_item, parent, false);
         Recomm_RecyclerViewAdapter.ViewHolder vh = new Recomm_RecyclerViewAdapter.ViewHolder(view);
+
         return vh;
     }
 
@@ -75,4 +81,7 @@ public class Recomm_RecyclerViewAdapter  extends RecyclerView.Adapter<Recomm_Rec
         return mList.size();
     }
 
+    public void onItemClick(View view, int position) {
+        fragmentManager.beginTransaction().replace(R.id.frame, new BookDetail()).commit();
+    }
 }

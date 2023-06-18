@@ -8,9 +8,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
+import com.example.recomm.Model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottom;
@@ -20,9 +24,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("name");
+        String email = intent.getStringExtra("email");
+        String pass = intent.getStringExtra("pass");
+        String birth = intent.getStringExtra("birth");
         bottom = findViewById(R.id.navigationView);
         bottom.setSelectedItemId(R.id.navagation_home);
-        getSupportFragmentManager().beginTransaction().add(R.id.frame, new Home()).commit();
+        Bundle bundle = new Bundle();
+        bundle.putString("name",name);
+        bundle.putString("pass",pass);
+        bundle.putString("birth",birth);
+        bundle.putString("email",email);
+        Home targetFragment = new Home();
+        targetFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().add(R.id.frame, targetFragment).commit();
 
         bottom.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
@@ -32,10 +48,14 @@ public class MainActivity extends AppCompatActivity {
                         //getSupportFragmentManager().beginTransaction().replace(R.id.frame, new MainFragment()).commit();
                         break;
                     case R.id.navagation_search:
-                        //getSupportFragmentManager().beginTransaction().replace(R.id.frame, new LookAround()).commit();
+                        Search targetFragment2 = new Search();
+                        targetFragment2.setArguments(bundle);
+                        getSupportFragmentManager().beginTransaction().add(R.id.frame, targetFragment2).commit();
                         break;
                     case R.id.navagation_home:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frame, new Home()).commit();
+                        Home targetFragment3 = new Home();
+                        targetFragment3.setArguments(bundle);
+                        getSupportFragmentManager().beginTransaction().add(R.id.frame, targetFragment3).commit();
                         break;
                     case R.id.navagation_mybook:
                         //getSupportFragmentManager().beginTransaction().replace(R.id.frame, new Mypage()).commit();

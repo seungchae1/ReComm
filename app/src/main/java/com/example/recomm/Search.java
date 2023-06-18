@@ -1,42 +1,50 @@
 package com.example.recomm;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class Search extends AppCompatActivity {
+public class Search extends Fragment {
         private TextView toTextView;
         private TextView yesTextView;
         private boolean isToggleOn = true; // 초기 상태를 toggle_on으로 설정
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_search);
+    private View view;
 
-            toTextView = findViewById(R.id.to);
-            yesTextView = findViewById(R.id.yes);
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-            toTextView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    isToggleOn = !isToggleOn; // 상태를 반전시킴
-                    updateToggleState();
-                }
-            });
+        view = inflater.inflate(R.layout.fragment_search, container, false);
 
-            yesTextView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    isToggleOn = !isToggleOn; // 상태를 반전시킴
-                    updateToggleState();
-                }
-            });
-        }
+        toTextView = view.findViewById(R.id.to);
+        yesTextView = view.findViewById(R.id.yes);
 
-        private void updateToggleState() {
+        toTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isToggleOn = !isToggleOn; // 상태를 반전시킴
+                updateToggleState();
+            }
+        });
+
+        yesTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isToggleOn = !isToggleOn; // 상태를 반전시킴
+                updateToggleState();
+            }
+        });
+        return view;
+    }
+
+    private void updateToggleState() {
             if (isToggleOn) {
                 // 오늘 활성화
                 toTextView.setBackgroundResource(R.drawable.toggle_on);

@@ -94,12 +94,16 @@ public class Login2 extends AppCompatActivity {
                                 if(s.child("pass").getValue().equals(edit2.getText().toString())){
                                     pass=true;
                                     User user=new User();
-                                    user.email=s.child("email").toString();
-                                    user.setPass(s.child("pass").toString());
-                                    user.name=s.child("name").toString();
-                                    user.setBirth(s.child("birth").toString());
+                                    user.email=s.child("email").getValue().toString();
+                                    user.setPass(s.child("pass").getValue().toString());
+                                    user.name=s.child("name").getValue().toString();
+                                    user.setBirth(s.child("birth").getValue().toString());
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    intent.putExtra("user",user);
+                                    //intent.putExtra("user",user);
+                                    intent.putExtra("name", user.name);
+                                    intent.putExtra("email", user.email);
+                                    intent.putExtra("pass", user.getPass());
+                                    intent.putExtra("birth", user.getBirth());
                                     startActivity(intent);
                                 }
                             }

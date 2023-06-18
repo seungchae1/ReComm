@@ -332,19 +332,32 @@
         </FrameLayout>
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="32dp"
             android:fontFamily="@font/notosans_kr_medium"
-            android:text="님의 취향저격 추천 "
+            android:text="user"
             android:textColor="#494949"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/frameLayout4" />
 
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/notosans_kr_medium"
+            android:text="님의 취향저격 추천 "
+            android:textColor="#494949"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/username"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout4" />
+
         <ImageButton
+            android:id="@+id/imageButton4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
@@ -355,11 +368,11 @@
             app:layout_constraintTop_toTopOf="@+id/textView8" />
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/writername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:text="작가 이름"
-            android:layout_marginLeft="23dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
@@ -369,9 +382,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="작가님의 작품을 많이 읽으셨네요!"
-            app:layout_constraintBottom_toBottomOf="@+id/textView10"
-            app:layout_constraintStart_toEndOf="@+id/textView10"
-            app:layout_constraintTop_toTopOf="@+id/textView10"
+            app:layout_constraintBottom_toBottomOf="@+id/writername"
+            app:layout_constraintStart_toEndOf="@+id/writername"
+            app:layout_constraintTop_toTopOf="@+id/writername"
             app:layout_constraintVertical_bias="0.0" />
 
         <androidx.recyclerview.widget.RecyclerView

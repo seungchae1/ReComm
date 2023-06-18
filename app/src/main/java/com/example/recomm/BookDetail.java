@@ -1,38 +1,45 @@
 package com.example.recomm;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
-import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class BookDetail extends AppCompatActivity {
+public class BookDetail extends Fragment {
 
     // 리뷰 탭뷰
     private RelativeLayout latestLayout;
     private RelativeLayout recommendLayout;
     private RelativeLayout myReviewLayout;
     private LinearLayout textBox; // 이거는 뭐가 잘못된 건지 보이면 안되는데 보여서 쓰는 코드니까 무시하면돼!!!
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_book_detail);
 
-        latestLayout = findViewById(R.id.latestLayout);
-        recommendLayout = findViewById(R.id.recommendLayout);
-        myReviewLayout = findViewById(R.id.myReviewLayout);
-        textBox = findViewById(R.id.textBox); // 무시히ㅏ면돼!!!
+    private View view;
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        view = inflater.inflate(R.layout.fragment_book_detail, container, false);
+        latestLayout = view.findViewById(R.id.latestLayout);
+        recommendLayout = view.findViewById(R.id.recommendLayout);
+        myReviewLayout = view.findViewById(R.id.myReviewLayout);
+        textBox = view.findViewById(R.id.textBox); // 무시히ㅏ면돼!!!
 
 
         // 작품 정보 탭뷰
         CustomTab customTab = new CustomTab();
         customTab.init();
+
+        return view;
     }
 
     // 최신순 텍스트 클릭 이벤트 처리
@@ -65,13 +72,13 @@ public class BookDetail extends AppCompatActivity {
         RelativeLayout item2Layout;
 
         public void init() {
-            item1 = findViewById(R.id.item1);
-            item1Layout = findViewById(R.id.item1Layout);
-            item2Layout = findViewById(R.id.item2Layout);
-            item2 = findViewById(R.id.item2);
+            item1 = view.findViewById(R.id.item1);
+            item1Layout = view.findViewById(R.id.item1Layout);
+            item2Layout = view.findViewById(R.id.item2Layout);
+            item2 = view.findViewById(R.id.item2);
             item1.setOnClickListener(this);
             item2.setOnClickListener(this);
-            select = findViewById(R.id.select);
+            select = view.findViewById(R.id.select);
             def = item2.getTextColors();
         }
 

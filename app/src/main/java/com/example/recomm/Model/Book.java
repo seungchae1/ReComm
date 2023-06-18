@@ -1,4 +1,4 @@
-package com.example.recomm;
+package com.example.recomm.Model;
 
 import com.google.gson.annotations.SerializedName;
 

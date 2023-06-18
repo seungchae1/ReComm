@@ -6,16 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.recomm.Model.User;
 import com.google.android.material.textfield.TextInputLayout;
-
-import java.io.Serializable;
 
 public class Join2 extends AppCompatActivity {
 

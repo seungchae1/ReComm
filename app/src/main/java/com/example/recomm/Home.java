@@ -2,14 +2,12 @@ package com.example.recomm;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,12 +17,16 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
+import com.example.recomm.Adapter.ImageSliderAdapter;
+import com.example.recomm.Adapter.Recomm_RecyclerViewAdapter;
+import com.example.recomm.Adapter.Recomm_RecyclerViewItem;
+import com.example.recomm.Adapter.RecyclerViewAdapter;
+import com.example.recomm.Adapter.RecyclerViewItem;
+import com.example.recomm.Adapter.Viewpager2Adapter2;
 import com.example.recomm.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -84,7 +86,6 @@ public class Home extends Fragment {
     private ArrayList<Recomm_RecyclerViewItem> mList2;
     private Recomm_RecyclerViewAdapter recommRecyclerViewAdapter;
     private ImageButton top5Btn;
-    private LinearLayout imgl, textl;
 
     private FragmentHomeBinding binding;
 
@@ -201,8 +202,7 @@ public class Home extends Fragment {
         top5Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RecommRank.class);
-                startActivity(intent);
+                getParentFragmentManager().beginTransaction().replace(R.id.frame, new RecommRank()).commit();
             }
         });
 

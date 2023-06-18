@@ -1,4 +1,4 @@
-package com.example.recomm;
+package com.example.recomm.Adapter;
 
 public class RecyclerViewItem {
     private String mainImg;

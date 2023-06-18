@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
-import java.util.ArrayList;
+import com.example.recomm.Model.User;
 
 public class Join extends AppCompatActivity {
 

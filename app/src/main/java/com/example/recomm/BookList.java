@@ -1,5 +1,6 @@
 package com.example.recomm;
 
+import com.example.recomm.Model.Book;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;

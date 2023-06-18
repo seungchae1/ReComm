@@ -16,6 +16,8 @@
         android:layout_height="wrap_content"
         app:itemBackground="@color/white"
         app:labelVisibilityMode="labeled"
+        app:itemTextColor="@drawable/bottom_selector"
+        app:itemIconTint="@drawable/bottom_selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/main_menu_bottom"
         tools:ignore="MissingConstraints" />

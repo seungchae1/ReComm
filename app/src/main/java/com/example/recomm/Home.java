@@ -135,7 +135,7 @@ public class Home extends Fragment {
                         addItem(Booklist.getItem().get(i).getCoverLargeUrl(), count, Booklist.getItem().get(i).getTitle(), Booklist.getItem().get(i).getAuthor(), Booklist.getItem().get(i).getCategoryName(), "카테고리2", mList);
                     }
                     mRecyclerView = binding.recyclerView;
-                    mRecyclerViewAdapter = new RecyclerViewAdapter(mList, getActivity());
+                    mRecyclerViewAdapter = new RecyclerViewAdapter(mList, getActivity(), getParentFragmentManager());
                     mRecyclerView.setAdapter(mRecyclerViewAdapter);
                     mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                     mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false)); //가로

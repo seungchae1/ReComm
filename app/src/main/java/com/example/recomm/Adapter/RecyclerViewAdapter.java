@@ -1,6 +1,9 @@
 package com.example.recomm.Adapter;
 
+import android.app.Fragment;
 import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,16 +12,20 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.recomm.BookDetail;
 import com.example.recomm.R;
+import com.example.recomm.Search;
 
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     private Context context;
+    private FragmentManager fmanager;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView mainImg, backImg;
@@ -36,14 +43,33 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             writerText = (TextView) itemView.findViewById(R.id.writer_text);
             categoryText = (TextView) itemView.findViewById(R.id.category1);
             categoryText2 = (TextView) itemView.findViewById(R.id.category2);
+
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    RecyclerViewItem myitem = mList.get(position);
+                    Log.d("test3", myitem.getTitle());
+                    Bundle bundle = new Bundle();
+                    bundle.putString("img", myitem.getMainImg());
+                    //bundle.putString("category", item.getCategory());
+                    //bundle.putString("writer", item.getWriter());
+                    bundle.putString("title", myitem.getTitle());
+                    BookDetail targetFragment = new BookDetail();
+                    targetFragment.setArguments(bundle);
+                    fmanager.beginTransaction().add(R.id.frame, targetFragment).commit();
+                }
+            });
         }
     }
 
     private ArrayList<RecyclerViewItem> mList = null;
 
-    public RecyclerViewAdapter(ArrayList<RecyclerViewItem> mList, Context context) {
+    public RecyclerViewAdapter(ArrayList<RecyclerViewItem> mList, Context context, FragmentManager fragmentManager) {
         this.mList = mList;
         this.context = context;
+        fmanager = fragmentManager;
     }
 
     // 아이템 뷰를 위한 뷰홀더 객체를 생성하여 리턴
@@ -62,7 +88,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, int position) {
         RecyclerViewItem item = mList.get(position);
-
+        Log.d("test1", item.getTitle());
         //holder.backImg.setBackgroundResource(R.drawable.testimg);
         Glide.with(context)
                 .load(item.getMainImg())
@@ -81,10 +107,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 .error(R.drawable.testimg) // 로드 실패 이미지
                 .into(holder.mainImg);
         holder.rankText.setText(item.getRank().toString());
-        holder.titleText.setText(item.getTitle().toString());
-        holder.writerText.setText(item.getWriter().toString());
-        holder.categoryText.setText(item.getCategory().toString());
+        holder.titleText.setText(item.getTitle());
+        holder.writerText.setText(item.getWriter());
+        holder.categoryText.setText(item.getCategory());
         //holder.categoryText2.setText(item.getCategory2().toString());
+        Log.d("test2", item.getTitle());
     }
 
     @Override

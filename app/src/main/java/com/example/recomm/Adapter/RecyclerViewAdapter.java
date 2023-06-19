@@ -18,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.recomm.BookDetail;
+import com.example.recomm.BookList;
+import com.example.recomm.Model.Book;
 import com.example.recomm.R;
 import com.example.recomm.Search;
 
@@ -26,6 +28,8 @@ import java.util.ArrayList;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     private Context context;
     private FragmentManager fmanager;
+    private BookList bookList;
+    private String userId = "";
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView mainImg, backImg;
@@ -50,12 +54,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     RecyclerViewItem myitem = mList.get(position);
-                    Log.d("test3", myitem.getTitle());
+                    Book b = bookList.getItem().get(position);
+                    Log.d("test3", myitem.getWriter());
                     Bundle bundle = new Bundle();
                     bundle.putString("img", myitem.getMainImg());
-                    //bundle.putString("category", item.getCategory());
-                    //bundle.putString("writer", item.getWriter());
+                    bundle.putString("writer", myitem.getWriter());
                     bundle.putString("title", myitem.getTitle());
+                    bundle.putString("desc",b.getDescription());
+                    bundle.putInt("book_id",b.getItemId());
+                    bundle.putString("userid",userId);
                     BookDetail targetFragment = new BookDetail();
                     targetFragment.setArguments(bundle);
                     fmanager.beginTransaction().add(R.id.frame, targetFragment).commit();
@@ -66,10 +73,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private ArrayList<RecyclerViewItem> mList = null;
 
-    public RecyclerViewAdapter(ArrayList<RecyclerViewItem> mList, Context context, FragmentManager fragmentManager) {
+    public RecyclerViewAdapter(ArrayList<RecyclerViewItem> mList, Context context, FragmentManager fragmentManager, BookList bookList, String userId) {
         this.mList = mList;
         this.context = context;
         fmanager = fragmentManager;
+        this.bookList = bookList;
+        this.userId = userId;
+        Log.d("TEst", userId);
     }
 
     // 아이템 뷰를 위한 뷰홀더 객체를 생성하여 리턴
@@ -94,8 +104,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 .load(item.getMainImg())
                 .diskCacheStrategy(DiskCacheStrategy.NONE) // 캐시 삭제
                 .skipMemoryCache(true) // 캐시 삭제  
-                .placeholder(R.drawable.testimg) // 로딩중 이미지
-                .error(R.drawable.testimg) // 로드 실패 이미지
+                //.placeholder(R.drawable.testimg) // 로딩중 이미지
+                //.error(R.drawable.testimg) // 로드 실패 이미지
                 .into(holder.backImg);
         //holder.mainImg.setImageResource(R.drawable.testimg);
 
@@ -103,8 +113,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 .load(item.getMainImg())
                 .diskCacheStrategy(DiskCacheStrategy.NONE) // 캐시 삭제
                 .skipMemoryCache(true) // 캐시 삭제
-                .placeholder(R.drawable.testimg) // 로딩중 이미지
-                .error(R.drawable.testimg) // 로드 실패 이미지
+                //.placeholder(R.drawable.testimg) // 로딩중 이미지
+                //.error(R.drawable.testimg) // 로드 실패 이미지
                 .into(holder.mainImg);
         holder.rankText.setText(item.getRank().toString());
         holder.titleText.setText(item.getTitle());

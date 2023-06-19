@@ -93,12 +93,12 @@ public class Home extends Fragment {
     private User user;
 
     private TextView userName, WriterName;
+    private String userId;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
         userName = view.findViewById(R.id.username);
         WriterName = view.findViewById(R.id.writername);
 
@@ -106,7 +106,11 @@ public class Home extends Fragment {
         Bundle bundle = getArguments();
         if(bundle != null) {
             userName.setText(bundle.getString("name"));
+            userId =bundle.getString("email");
         }
+        Bundle bundle2 = new Bundle();
+        bundle2.putString("email",bundle.getString("email"));
+        bundle2.putString("name",bundle.getString("name"));
 
         //api
         Retrofit retrofit = new Retrofit.Builder()
@@ -135,7 +139,7 @@ public class Home extends Fragment {
                         addItem(Booklist.getItem().get(i).getCoverLargeUrl(), count, Booklist.getItem().get(i).getTitle(), Booklist.getItem().get(i).getAuthor(), Booklist.getItem().get(i).getCategoryName(), "카테고리2", mList);
                     }
                     mRecyclerView = binding.recyclerView;
-                    mRecyclerViewAdapter = new RecyclerViewAdapter(mList, getActivity(), getParentFragmentManager());
+                    mRecyclerViewAdapter = new RecyclerViewAdapter(mList, getActivity(), getParentFragmentManager(), Booklist, userId);
                     mRecyclerView.setAdapter(mRecyclerViewAdapter);
                     mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                     mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false)); //가로

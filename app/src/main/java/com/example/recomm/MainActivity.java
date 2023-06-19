@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottom;
     OnBackPressedListener listener;
-
+    Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
         String birth = intent.getStringExtra("birth");
         bottom = findViewById(R.id.navigationView);
         bottom.setSelectedItemId(R.id.navagation_home);
-        Bundle bundle = new Bundle();
+        bundle = new Bundle();
+        //test
+        email = "dtest";
         bundle.putString("name",name);
         bundle.putString("pass",pass);
         bundle.putString("birth",birth);

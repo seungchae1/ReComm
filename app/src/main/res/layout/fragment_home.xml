@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:paddingBottom="20dp"
     tools:context=".Home">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -50,7 +51,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="13dp"
             android:backgroundTint="@android:color/transparent"
             android:src="@drawable/logo"
             app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="50dp"
             android:fontFamily="@font/notosans_kr_medium"
             android:text="리콤이 선정한 TOP 5"
             android:textColor="#494949"
@@ -106,7 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="50dp"
             android:fontFamily="@font/notosans_kr_medium"
             android:text="서점 별 베스트 셀러"
             android:textColor="#494949"
@@ -114,16 +115,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="22dp"
-            android:layout_marginEnd="20dp"
-            android:background="@color/white"
-            android:src="@drawable/arrowbtn"
-            app:layout_constraintBottom_toBottomOf="@+id/textView6"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView6"
-            tools:ignore="TouchTargetSizeCheck" />
+<!--        <ImageButton-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="22dp"-->
+<!--            android:layout_marginEnd="20dp"-->
+<!--            android:background="@color/white"-->
+<!--            android:src="@drawable/arrowbtn"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/textView6"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/textView6"-->
+<!--            tools:ignore="TouchTargetSizeCheck" />-->
 
         <LinearLayout
             android:id="@+id/linearLayout3"
@@ -134,10 +135,12 @@
             app:layout_constraintTop_toBottomOf="@+id/textView6">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/best_change1"
+                android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
-                android:background="@drawable/bestwhbtn"
+                android:background="@drawable/bestredbtn"
+                android:textColor="@color/white"
                 android:fontFamily="@font/notosans_kr_regular"
                 android:includeFontPadding="false"
                 android:paddingLeft="16dp"
@@ -146,6 +149,7 @@
                 android:text="알라딘" />
 
             <TextView
+                android:id="@+id/best_change2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
@@ -158,6 +162,7 @@
                 android:text="교보문고" />
 
             <TextView
+                android:id="@+id/best_change3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bestwhbtn"
@@ -186,7 +191,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/notosanskr_bold"
                 android:text="1"
                 android:textSize="16sp" />
@@ -194,31 +199,35 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="54dp"
                 android:layout_height="54dp"
+                app:cardCornerRadius="6dp"
                 android:layout_marginLeft="70dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/myrectangle">
 
                 <ImageView
+                    android:id="@+id/best_change1_img"
                     android:layout_width="54dp"
                     android:layout_height="54dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/testimg" />
+                    android:src="@drawable/bestimg1" />
             </androidx.cardview.widget.CardView>
 
             <TextView
+                android:id="@+id/best_change1_book"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="150dp"
                 android:layout_marginTop="15dp"
-                android:text="책제목"
+                android:text="어서오세요. 휴남동 서점입니다. "
                 android:textColor="#494949" />
 
             <TextView
+                android:id="@+id/best_change1_writer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="150dp"
                 android:layout_marginTop="40dp"
-                android:text="저자"
+                android:text="황보름"
                 android:textColor="#A4A4A4"
                 android:textSize="12sp" />
         </FrameLayout>
@@ -240,7 +249,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/notosanskr_bold"
                 android:text="2"
                 android:textSize="16sp" />
@@ -248,31 +257,35 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="54dp"
                 android:layout_height="54dp"
+                app:cardCornerRadius="6dp"
                 android:layout_marginLeft="70dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/myrectangle">
 
                 <ImageView
+                    android:id="@+id/best_change2_img"
                     android:layout_width="54dp"
                     android:layout_height="54dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/testimg" />
+                    android:src="@drawable/bestimg2" />
             </androidx.cardview.widget.CardView>
 
             <TextView
+                android:id="@+id/best_change2_book"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="150dp"
                 android:layout_marginTop="15dp"
-                android:text="책제목"
+                android:text="아버지의 해방일지"
                 android:textColor="#494949" />
 
             <TextView
+                android:id="@+id/best_change2_writer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="150dp"
                 android:layout_marginTop="40dp"
-                android:text="저자"
+                android:text="정지아"
                 android:textColor="#A4A4A4"
                 android:textSize="12sp" />
         </FrameLayout>
@@ -294,7 +307,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/notosanskr_bold"
                 android:text="3"
                 android:textSize="16sp" />
@@ -304,39 +317,43 @@
                 android:layout_height="54dp"
                 android:layout_marginLeft="70dp"
                 android:layout_marginTop="8dp"
+                app:cardCornerRadius="6dp"
                 android:background="@drawable/myrectangle">
 
                 <ImageView
+                    android:id="@+id/best_change3_img"
                     android:layout_width="54dp"
                     android:layout_height="54dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/testimg" />
+                    android:src="@drawable/bestimg3" />
             </androidx.cardview.widget.CardView>
 
             <TextView
+                android:id="@+id/best_change3_book"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="150dp"
                 android:layout_marginTop="15dp"
-                android:text="책제목"
+                android:text="물고기는 존재하지 않는다"
                 android:textColor="#494949" />
 
             <TextView
+                android:id="@+id/best_change3_writer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="150dp"
                 android:layout_marginTop="40dp"
-                android:text="저자"
+                android:text="룰루밀러"
                 android:textColor="#A4A4A4"
                 android:textSize="12sp" />
         </FrameLayout>
 
         <TextView
             android:id="@+id/username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="39dp"
+            android:layout_height="51dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="50dp"
             android:fontFamily="@font/notosans_kr_medium"
             android:text="user"
             android:textColor="#494949"
@@ -348,7 +365,7 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="50dp"
             android:fontFamily="@font/notosans_kr_medium"
             android:text="님의 취향저격 추천 "
             android:textColor="#494949"
@@ -356,16 +373,16 @@
             app:layout_constraintStart_toEndOf="@+id/username"
             app:layout_constraintTop_toBottomOf="@+id/frameLayout4" />
 
-        <ImageButton
-            android:id="@+id/imageButton4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:background="@color/white"
-            android:src="@drawable/arrowbtn"
-            app:layout_constraintBottom_toBottomOf="@+id/textView8"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView8" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/imageButton4"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="20dp"-->
+<!--            android:background="@color/white"-->
+<!--            android:src="@drawable/arrowbtn"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/textView8"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/textView8" />-->
 
         <TextView
             android:id="@+id/writername"
@@ -397,7 +414,8 @@
             android:id="@+id/viewPager2"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />

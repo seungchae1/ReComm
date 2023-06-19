@@ -40,7 +40,6 @@
         android:id="@+id/text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
         android:fontFamily="@font/notosans_kr_regular"
         android:text="당신의 착함을 이용하는 사람들에게\n 먹이는 한 방"
         android:textSize="11sp"

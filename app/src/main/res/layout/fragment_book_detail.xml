@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
+    android:paddingBottom="20dp"
     tools:context=".BookDetail">
 
 
@@ -23,11 +25,23 @@
                 android:layout_height="360dp">
 
                 <ImageView
+                    android:id="@+id/back_img"
                     android:layout_width="match_parent"
                     android:layout_height="380dp"
-                    android:layout_marginTop="-10dp"
+                    android:src="@drawable/book_detail"
+                    android:scaleType="centerCrop" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="380dp"
+                    android:src="@drawable/book_detail_blur"/>
+                <ImageView
+                    android:id="@+id/main_img"
+                    android:layout_width="160dp"
+                    android:layout_marginTop="95dp"
+                    android:layout_height="210dp"
+                    android:layout_marginLeft="125dp"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/book_detail" />
-
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
@@ -99,6 +113,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:fontFamily="@font/notosans_kr_medium"
@@ -107,6 +122,7 @@
                     android:textSize="18dp" />
 
                 <TextView
+                    android:id="@+id/writername"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/notosans_kr_regular"
@@ -213,6 +229,7 @@
                         android:background="#E8E8E8" />
 
                     <TextView
+                        android:id="@+id/book_desc"
                         android:fontFamily="@font/notosans_kr_medium"
                         android:textSize="14dp"
                         android:textColor="@color/black"
@@ -221,10 +238,8 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="92dp"
                         android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginBottom="20dp"
                         android:text="공감을 불러일으키는 이야기와 서정적이며 따뜻한 문장, 그 안에 담긴 뜨거운 문제의식으로 많은 지지와 관심을 받고 있는 작가 최은형의 첫 장편소설" />
-
-
 
                 </RelativeLayout>
 
@@ -235,12 +250,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <LinearLayout
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_height="wrap_content">
 
                         <EditText
+                            android:id="@+id/comm_text"
                             android:fontFamily="@font/notosans_kr_regular"
                             android:textSize="12dp"
                             android:background="#F9F9F9"
@@ -252,10 +267,16 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="16dp"
                             android:layout_marginBottom="16dp"
-                            android:drawableRight="@drawable/book_deetail_review_submit"
                             android:hint="스포성 댓글이나 악플은 삭제될 수 있습니다."/>
-
-                    </LinearLayout>
+                        <ImageButton
+                            android:id="@+id/comm_submin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/book_deetail_review_submit"
+                            android:layout_gravity="center_vertical|right"
+                            android:backgroundTint="@android:color/transparent"
+                            android:layout_marginRight="16dp"/>
+                    </FrameLayout>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -313,7 +334,7 @@
 
                     <!-- 최신순 레이아웃 -->
                     <RelativeLayout
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="20dp"
                         android:id="@+id/latestLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -321,95 +342,13 @@
 
                         <!-- 여기에 최신순 리뷰가 뜨면돼 -->
                         <!-- 리뷰 컴포넌트야 이거 쓰면 돼!! -->
-                        <LinearLayout
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/notosans_kr_medium"
-                                android:textSize="14dp"
-                                android:text="엄희주"
-                                android:textColor="#494949"/>
-
-                            <TextView
-                                android:layout_width="320dp"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/notosans_kr_regular"
-                                android:textSize="12dp"
-                                android:text="굉장히 재미있었다. 내 인생에 도움을 준 책이다. 너무너무 재미있다 다음에 또 읽어야 겠다. "
-                                android:textColor="#494949"/>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:gravity="center_vertical">
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="@font/notosans_kr_regular"
-                                        android:textSize="12dp"
-                                        android:textColor="#777777"
-                                        android:text="2023.01.03" />
-                                </LinearLayout>
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="0dp"
-                                    android:layout_weight="1" />
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content">
-
-                                    <!-- 댓글 -->
-                                    <ImageView
-                                        android:layout_width="22dp"
-                                        android:layout_height="22dp"
-                                        android:layout_marginRight="10dp"
-                                        android:layout_marginTop="5dp"
-                                        android:src="@drawable/book_detail_comment"/>
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginRight="10dp"
-                                        android:fontFamily="@font/notosans_kr_regular"
-                                        android:textSize="12dp"
-                                        android:textColor="#777777"
-                                        android:text="0" />
-
-                                    <!-- 좋아요 -->
-                                    <ImageView
-                                        android:layout_width="22dp"
-                                        android:layout_height="22dp"
-                                        android:layout_marginRight="10dp"
-                                        android:layout_marginTop="5dp"
-                                        android:src="@drawable/book_detail_good"/>
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginRight="10dp"
-                                        android:fontFamily="@font/notosans_kr_regular"
-                                        android:textSize="12dp"
-                                        android:textColor="#777777"
-                                        android:text="0" />
-                                </LinearLayout>
-
-                            </LinearLayout>
-
-
-                        </LinearLayout>
+                        </androidx.recyclerview.widget.RecyclerView>
                     </RelativeLayout>
 
                     <!-- 추천순 레이아웃 -->
@@ -463,6 +402,7 @@
 
     </LinearLayout>
     <!-- 하단 고정 바 -->
+    <!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -509,7 +449,7 @@
         </LinearLayout>
 
     </LinearLayout>
-
+-->
 
 
 </LinearLayout>

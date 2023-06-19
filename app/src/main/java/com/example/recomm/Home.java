@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -62,12 +63,12 @@ public class Home extends Fragment {
             "이노우에 타케히코가 영화를 제작하는 과정을 \n" + "담은 글과 그림, 인터뷰 등에 관한 이야기를\n" + "리콤에서 최저가로 알려드립니다."
     };
     private int[] images2_2= new int[]{
-            R.drawable.testimg,
-            R.drawable.testimg,
-            R.drawable.testimg
+            R.drawable.promo1,
+            R.drawable.promo3,
+            R.drawable.promo2
     };
     private int[] images_2= new int[]{
-            R.drawable.testimg,
+            R.drawable.promo1_2,
             0,
             0
     };
@@ -93,12 +94,15 @@ public class Home extends Fragment {
     private User user;
 
     private TextView userName, WriterName;
+    private String userId;
+
+    private ImageView chImg1, chImg2, chImg3;
+    private TextView Bestchange1, Bestchange2, Bestchange3, chbook1, chbook2, chbook3, chwriter1, chwriter2, chwriter3;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
         userName = view.findViewById(R.id.username);
         WriterName = view.findViewById(R.id.writername);
 
@@ -106,7 +110,11 @@ public class Home extends Fragment {
         Bundle bundle = getArguments();
         if(bundle != null) {
             userName.setText(bundle.getString("name"));
+            userId =bundle.getString("email");
         }
+        Bundle bundle2 = new Bundle();
+        bundle2.putString("email",bundle.getString("email"));
+        bundle2.putString("name",bundle.getString("name"));
 
         //api
         Retrofit retrofit = new Retrofit.Builder()
@@ -135,7 +143,7 @@ public class Home extends Fragment {
                         addItem(Booklist.getItem().get(i).getCoverLargeUrl(), count, Booklist.getItem().get(i).getTitle(), Booklist.getItem().get(i).getAuthor(), Booklist.getItem().get(i).getCategoryName(), "카테고리2", mList);
                     }
                     mRecyclerView = binding.recyclerView;
-                    mRecyclerViewAdapter = new RecyclerViewAdapter(mList, getActivity());
+                    mRecyclerViewAdapter = new RecyclerViewAdapter(mList, getActivity(), getParentFragmentManager(), Booklist, userId);
                     mRecyclerView.setAdapter(mRecyclerViewAdapter);
                     mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                     mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false)); //가로
@@ -218,7 +226,79 @@ public class Home extends Fragment {
             }
         });
 
-
+        //서점 별 베스트 셀러
+        chbook1 = view.findViewById(R.id.best_change1_book);
+        chbook2 = view.findViewById(R.id.best_change2_book);
+        chbook3 = view.findViewById(R.id.best_change3_book);
+        chwriter1 = view.findViewById(R.id.best_change1_writer);
+        chwriter2 = view.findViewById(R.id.best_change2_writer);
+        chwriter3 = view.findViewById(R.id.best_change3_writer);
+        chImg1 = view.findViewById(R.id.best_change1_img);
+        chImg2 = view.findViewById(R.id.best_change2_img);
+        chImg3 = view.findViewById(R.id.best_change3_img);
+        Bestchange1 = view.findViewById(R.id.best_change1);
+        Bestchange1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bestchange1.setBackgroundResource(R.drawable.bestredbtn);
+                Bestchange1.setTextColor(Color.WHITE);
+                Bestchange3.setBackgroundResource(R.drawable.bestwhbtn);
+                Bestchange3.setTextColor(Color.parseColor("#494949"));
+                Bestchange2.setBackgroundResource(R.drawable.bestwhbtn);
+                Bestchange2.setTextColor(Color.parseColor("#494949"));
+                chbook1.setText("어서오세요. 휴남동 서점입니다. ");
+                chwriter1.setText("황보름");
+                chImg1.setImageResource(R.drawable.bestimg1);
+                chbook2.setText("아버지의 해방일지");
+                chwriter2.setText("정지아");
+                chImg2.setImageResource(R.drawable.bestimg2);
+                chbook3.setText("물고기는 존재하지 않는다");
+                chwriter3.setText("룰루밀러");
+                chImg3.setImageResource(R.drawable.bestimg3);
+            }
+        });
+        Bestchange2 = view.findViewById(R.id.best_change2);
+        Bestchange2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bestchange2.setBackgroundResource(R.drawable.bestredbtn);
+                Bestchange2.setTextColor(Color.WHITE);
+                Bestchange1.setBackgroundResource(R.drawable.bestwhbtn);
+                Bestchange1.setTextColor(Color.parseColor("#494949"));
+                Bestchange3.setBackgroundResource(R.drawable.bestwhbtn);
+                Bestchange3.setTextColor(Color.parseColor("#494949"));
+                chbook1.setText("음식중독");
+                chwriter1.setText("마이클 모스");
+                chImg1.setImageResource(R.drawable.bestimg2_1);
+                chbook2.setText("아무튼,현수동");
+                chwriter2.setText("장강명");
+                chImg2.setImageResource(R.drawable.bestimg2_2);
+                chbook3.setText("로렘 임숨의 책");
+                chwriter3.setText("구병모");
+                chImg3.setImageResource(R.drawable.bestimg2_3);
+            }
+        });
+        Bestchange3 = view.findViewById(R.id.best_change3);
+        Bestchange3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bestchange3.setBackgroundResource(R.drawable.bestredbtn);
+                Bestchange3.setTextColor(Color.WHITE);
+                Bestchange2.setBackgroundResource(R.drawable.bestwhbtn);
+                Bestchange2.setTextColor(Color.parseColor("#494949"));
+                Bestchange1.setBackgroundResource(R.drawable.bestwhbtn);
+                Bestchange1.setTextColor(Color.parseColor("#494949"));
+                chbook1.setText("희망의 끈");
+                chwriter1.setText("히가시노 게이고");
+                chImg1.setImageResource(R.drawable.bestimg3_1);
+                chbook2.setText("별빛 너머의 별");
+                chwriter2.setText("나태주");
+                chImg2.setImageResource(R.drawable.bestimg3_2);
+                chbook3.setText("리보와 앤");
+                chwriter3.setText("어윤정");
+                chImg3.setImageResource(R.drawable.bestimg3_3);
+            }
+        });
         return view;
     }
 

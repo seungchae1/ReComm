@@ -47,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.navagation_category:
-                        //getSupportFragmentManager().beginTransaction().replace(R.id.frame, new MainFragment()).commit();
+                        CategoryActivity targetFragment = new CategoryActivity();
+                        targetFragment.setArguments(bundle);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame, targetFragment).commit();
                         break;
                     case R.id.navagation_search:
                         Search targetFragment2 = new Search();

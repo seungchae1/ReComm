@@ -13,9 +13,10 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/notosanskr_bold"
         android:textSize="20dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginBottom="32dp"
+        android:textColor="#494949"
         android:text="카테고리" />
 
     <GridView

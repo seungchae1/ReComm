@@ -1,6 +1,9 @@
 package com.example.recomm;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -20,17 +23,17 @@ import org.checkerframework.checker.units.qual.C;
 
 import java.util.ArrayList;
 
-public class CategoryActivity extends AppCompatActivity {
+public class CategoryActivity extends Fragment {
 
     private GridView gridView = null;
     private GridViewAdapter adapter = null;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_category, container, false);
 
-        gridView = (GridView) findViewById(R.id.gridView);
+        gridView = (GridView) view.findViewById(R.id.gridView);
         adapter = new GridViewAdapter();
 
         adapter.addItem(new CategoryItem("가정/취미", R.drawable.icon1));
@@ -55,7 +58,9 @@ public class CategoryActivity extends AppCompatActivity {
         adapter.addItem(new CategoryItem("SF", R.drawable.icon20));
 
         gridView.setAdapter(adapter);
+        return view;
     }
+
 
     class GridViewAdapter extends BaseAdapter {
         ArrayList<CategoryItem> items = new ArrayList<CategoryItem>();

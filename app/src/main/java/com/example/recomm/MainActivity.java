@@ -60,7 +60,9 @@ public class MainActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().add(R.id.frame, targetFragment3).commit();
                         break;
                     case R.id.navagation_mybook:
-                        //getSupportFragmentManager().beginTransaction().replace(R.id.frame, new Mypage()).commit();
+                        Mybook targetFragment4 = new Mybook();
+                        targetFragment4.setArguments(bundle);
+                        getSupportFragmentManager().beginTransaction().add(R.id.frame, targetFragment4).commit();
                         break;
                     case R.id.navagation_mypage:
                         //getSupportFragmentManager().beginTransaction().replace(R.id.frame, new Mypage()).commit();

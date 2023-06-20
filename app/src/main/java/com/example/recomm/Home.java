@@ -135,7 +135,6 @@ public class Home extends Fragment {
                     int imax = 5;
                     int count = 0;
                     for(int i=0;i<imax;i++){
-                        Log.d("TESTURL",Booklist.getItem().get(i).getCoverLargeUrl());
                         if(!(Booklist.getItem().get(i).getCoverLargeUrl().contains("/partner/"))){
                             imax++;
                             continue;

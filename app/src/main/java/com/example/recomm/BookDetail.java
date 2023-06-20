@@ -64,6 +64,7 @@ public class BookDetail extends Fragment {
     private long user_index, post_index;
 
     private FragmentBookDetailBinding binding;
+    private ArrayList<Comm> commList;
 
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference(); //fire base
     DatabaseReference user_db = mRootRef.child("user");
@@ -88,6 +89,7 @@ public class BookDetail extends Fragment {
         desc = view.findViewById(R.id.book_desc);
 
         recyclerView = view.findViewById(R.id.recyclerView);
+        commList = new ArrayList<Comm>();
 
         //해당 도서 데이터
         Bundle bundle = getArguments();
@@ -125,6 +127,7 @@ public class BookDetail extends Fragment {
                 comm.setContent(CommText.getText().toString());
                 comm.setUserId(userId);
                 comm.setDate(String.valueOf(currentTime));
+                commList.add(comm);
                 user_db.child(userId).child("mypost").child(String.valueOf(user_index)).setValue(comm);
                 post_db.child(String.valueOf(BookId)).child(String.valueOf(post_index)).setValue(comm);
                 CommText.setText("");
@@ -231,7 +234,6 @@ public class BookDetail extends Fragment {
     }
 
     public void setRecycle(){
-        ArrayList<Comm> commList = new ArrayList<Comm>();
         post_db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

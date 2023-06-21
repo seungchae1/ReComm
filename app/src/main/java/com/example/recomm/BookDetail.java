@@ -121,25 +121,23 @@ public class BookDetail extends Fragment {
         view_db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.getChildrenCount()>=5){
-                    ArrayList<String> imgs = new ArrayList<>();
+                ArrayList<String> imgs = new ArrayList<>();
+                try{
                     imgs.add(img_url);
                     imgs.add(snapshot.child(String.valueOf(0)).getValue().toString());
                     imgs.add(snapshot.child(String.valueOf(1)).getValue().toString());
                     imgs.add(snapshot.child(String.valueOf(2)).getValue().toString());
                     imgs.add(snapshot.child(String.valueOf(3)).getValue().toString());
                     imgs.add(snapshot.child(String.valueOf(4)).getValue().toString());
+                }catch (Exception e){
 
-                    for(int i=0; i<6; i++){
-                        view_db.child(String.valueOf(snapshot.getChildrenCount())).setValue(imgs.get(i));
-                    }
-
-                }else{
-                    Log.d("test img input", img_url);
-                    view_db.child(String.valueOf(snapshot.getChildrenCount())).setValue(img_url);
                 }
-            }
+                Log.d("test img url size", String.valueOf(imgs.size()));
+                for(int i=0; i<imgs.size(); i++){
+                    view_db.child(String.valueOf(String.valueOf(i))).setValue(imgs.get(i));
+                }
 
+            }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

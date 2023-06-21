@@ -79,7 +79,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         fmanager = fragmentManager;
         this.bookList = bookList;
         this.userId = userId;
-        Log.d("TEst", userId);
     }
 
     // 아이템 뷰를 위한 뷰홀더 객체를 생성하여 리턴

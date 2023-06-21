@@ -68,7 +68,7 @@ public class Comm_RecyclerViewAdapter extends RecyclerView.Adapter<Comm_Recycler
     @Override
     public void onBindViewHolder(@NonNull Comm_RecyclerViewAdapter.ViewHolder holder, int position) {
         Comm item = commList.get(position);
-        holder.user.setText(item.getUserId());
+        holder.user.setText(item.getUserId().substring(1));
         holder.Content.setText(item.getContent());
         holder.date.setText(item.getDate());
     }

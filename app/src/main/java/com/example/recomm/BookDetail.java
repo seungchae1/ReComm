@@ -7,13 +7,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -35,6 +38,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.net.URI;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -70,6 +74,8 @@ public class BookDetail extends Fragment {
     DatabaseReference user_db = mRootRef.child("user");
     DatabaseReference post_db = mRootRef.child("post");
 
+    String img_url;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -77,9 +83,9 @@ public class BookDetail extends Fragment {
         view = inflater.inflate(R.layout.fragment_book_detail, container, false);
 
         latestLayout = view.findViewById(R.id.latestLayout);
-        recommendLayout = view.findViewById(R.id.recommendLayout);
-        myReviewLayout = view.findViewById(R.id.myReviewLayout);
-        textBox = view.findViewById(R.id.textBox); // 무시히ㅏ면돼!!!
+//        recommendLayout = view.findViewById(R.id.recommendLayout);
+//        myReviewLayout = view.findViewById(R.id.myReviewLayout);
+//        textBox = view.findViewById(R.id.textBox); // 무시히ㅏ면돼!!!
 
         img = view.findViewById(R.id.main_img);
         img2 = view.findViewById(R.id.back_img);
@@ -93,6 +99,7 @@ public class BookDetail extends Fragment {
 
         //해당 도서 데이터
         Bundle bundle = getArguments();
+        img_url = bundle.getString("img");
         if(bundle != null){
             Glide.with(this)
                 .load(bundle.getString("img"))
@@ -109,6 +116,36 @@ public class BookDetail extends Fragment {
             BookId = bundle.getInt("book_id");
         }
 
+        //최근 본 도서 저장
+        DatabaseReference view_db = user_db.child(userId).child("view");
+        view_db.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.getChildrenCount()>=5){
+                    ArrayList<String> imgs = new ArrayList<>();
+                    imgs.add(img_url);
+                    imgs.add(snapshot.child(String.valueOf(0)).getValue().toString());
+                    imgs.add(snapshot.child(String.valueOf(1)).getValue().toString());
+                    imgs.add(snapshot.child(String.valueOf(2)).getValue().toString());
+                    imgs.add(snapshot.child(String.valueOf(3)).getValue().toString());
+                    imgs.add(snapshot.child(String.valueOf(4)).getValue().toString());
+
+                    for(int i=0; i<6; i++){
+                        view_db.child(String.valueOf(snapshot.getChildrenCount())).setValue(imgs.get(i));
+                    }
+
+                }else{
+                    Log.d("test img input", img_url);
+                    view_db.child(String.valueOf(snapshot.getChildrenCount())).setValue(img_url);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         //리뷰 recyclerview
         setIndex();
@@ -120,19 +157,27 @@ public class BookDetail extends Fragment {
         CommSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //db에 저장
-                Date currentTime = new Date();
-                Comm comm = new Comm();
-                comm.setBookId(BookId);
-                comm.setContent(CommText.getText().toString());
-                comm.setUserId(userId);
-                comm.setDate(String.valueOf(currentTime));
-                commList.add(comm);
-                user_db.child(userId).child("mypost").child(String.valueOf(user_index)).setValue(comm);
-                post_db.child(String.valueOf(BookId)).child(String.valueOf(post_index)).setValue(comm);
-                CommText.setText("");
-                setIndex();
-                setRecycle();
+                if(!CommText.getText().equals("") || CommText.getText() != null) {
+                    //db에 저장
+                    Date date = new Date();
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    String str = format.format(date);
+                    Comm comm = new Comm();
+                    comm.setBookId(BookId);
+                    comm.setContent(CommText.getText().toString());
+                    comm.setUserId(userId);
+                    comm.setDate(str);
+                    commList.add(comm);
+                    user_db.child(userId).child("mypost").child(String.valueOf(user_index)).setValue(comm);
+                    post_db.child(String.valueOf(BookId)).child(String.valueOf(post_index)).setValue(comm);
+                    CommText.setText("");
+                    setIndex();
+                    InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(getContext().INPUT_METHOD_SERVICE);
+                    if(imm.isAcceptingText()) {
+                        imm.hideSoftInputFromWindow(CommText.getWindowToken(), 0);
+                    }
+                    setRecycle();
+                }
             }
         });
 
@@ -140,29 +185,30 @@ public class BookDetail extends Fragment {
         CustomTab customTab = new CustomTab();
         customTab.init();
 
+
         return view;
     }
-
-    // 최신순 텍스트 클릭 이벤트 처리
-    public void showLatestLayout(View view) {
-        latestLayout.setVisibility(View.VISIBLE);
-        recommendLayout.setVisibility(View.GONE);
-        myReviewLayout.setVisibility(View.GONE);
-    }
-
-    // 추천순 텍스트 클릭 이벤트 처리
-    public void showRecommendLayout(View view) {
-        latestLayout.setVisibility(View.GONE);
-        recommendLayout.setVisibility(View.VISIBLE);
-        myReviewLayout.setVisibility(View.GONE);
-    }
-
-    // 내리뷰 텍스트 클릭 이벤트 처리
-    public void showMyReviewLayout(View view) {
-        latestLayout.setVisibility(View.GONE);
-        recommendLayout.setVisibility(View.GONE);
-        myReviewLayout.setVisibility(View.VISIBLE);
-    }
+//
+//    // 최신순 텍스트 클릭 이벤트 처리
+//    public void showLatestLayout(View view) {
+//        latestLayout.setVisibility(View.VISIBLE);
+//        recommendLayout.setVisibility(View.GONE);
+//        myReviewLayout.setVisibility(View.GONE);
+//    }
+//
+//    // 추천순 텍스트 클릭 이벤트 처리
+//    public void showRecommendLayout(View view) {
+//        latestLayout.setVisibility(View.GONE);
+//        recommendLayout.setVisibility(View.VISIBLE);
+//        myReviewLayout.setVisibility(View.GONE);
+//    }
+//
+//    // 내리뷰 텍스트 클릭 이벤트 처리
+//    public void showMyReviewLayout(View view) {
+//        latestLayout.setVisibility(View.GONE);
+//        recommendLayout.setVisibility(View.GONE);
+//        myReviewLayout.setVisibility(View.VISIBLE);
+//    }
 
     class CustomTab implements View.OnClickListener {
         ColorStateList def;
@@ -191,7 +237,7 @@ public class BookDetail extends Fragment {
                 item2.setTextColor(def);
                 item1Layout.setVisibility(View.VISIBLE);
                 item2Layout.setVisibility(View.INVISIBLE);
-                textBox.setVisibility(View.INVISIBLE);
+//                textBox.setVisibility(View.INVISIBLE);
                 latestLayout.setVisibility(View.INVISIBLE);
             } else if (view.getId() == R.id.item2) {
                 item1.setTextColor(def);
@@ -200,7 +246,7 @@ public class BookDetail extends Fragment {
                 select.animate().x(size).setDuration(100);
                 item2Layout.setVisibility(View.VISIBLE);
                 item1Layout.setVisibility(View.INVISIBLE);
-                textBox.setVisibility(View.VISIBLE);
+//                textBox.setVisibility(View.VISIBLE);
                 latestLayout.setVisibility(View.VISIBLE);
             }
         }
@@ -245,7 +291,6 @@ public class BookDetail extends Fragment {
                             comm.setBookId(Integer.parseInt(s.child(String.valueOf(i)).child("bookId").getValue().toString()));
                             comm.setContent(s.child(String.valueOf(i)).child("content").getValue().toString());
                             comm.setDate(s.child(String.valueOf(i)).child("date").getValue().toString());
-                            Log.d("comm test", comm.getUserId());
                             commList.add(comm);
                         }
                     }
@@ -258,6 +303,10 @@ public class BookDetail extends Fragment {
         });
        Comm_RecyclerViewAdapter recommRecyclerViewAdapter = new Comm_RecyclerViewAdapter(getActivity(), getParentFragmentManager(), commList, userId);
        recyclerView.setAdapter(recommRecyclerViewAdapter);
-       recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+       LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+       //리싸이클러뷰 역순 출력 코드
+       linearLayoutManager.setReverseLayout(true);
+       linearLayoutManager.setStackFromEnd(true);
+       recyclerView.setLayoutManager(linearLayoutManager);
     }
 }

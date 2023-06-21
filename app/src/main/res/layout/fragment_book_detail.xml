@@ -214,12 +214,12 @@
                             android:layout_marginBottom="16dp"
                             android:text="책 소개" />
 
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginTop="30dp"
-                            android:layout_marginLeft="254dp"
-                            android:src="@drawable/book_detail_intro_arrow"/>
+<!--                        <ImageView-->
+<!--                            android:layout_width="20dp"-->
+<!--                            android:layout_height="20dp"-->
+<!--                            android:layout_marginTop="30dp"-->
+<!--                            android:layout_marginLeft="254dp"-->
+<!--                            android:src="@drawable/book_detail_intro_arrow"/>-->
 
                     </LinearLayout>
                     <View
@@ -296,46 +296,46 @@
                     android:layout_marginLeft="16dp"
                     android:orientation="vertical">
 
-                    <LinearLayout
-                        android:id="@+id/textBox"
-                        android:visibility="invisible"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="right"
-                        android:orientation="horizontal">
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/textBox"-->
+<!--                        android:visibility="invisible"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:gravity="right"-->
+<!--                        android:orientation="horizontal">-->
 
-                        <!-- 최신순 텍스트 -->
-                        <TextView
-                            android:id="@+id/latestText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="최신순    |"
-                            android:layout_marginRight="10dp"
-                            android:onClick="showLatestLayout" />
+<!--                        &lt;!&ndash; 최신순 텍스트 &ndash;&gt;-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/latestText"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="최신순    |"-->
+<!--                            android:layout_marginRight="10dp"-->
+<!--                            android:onClick="showLatestLayout" />-->
 
-                        <!-- 추천순 텍스트 -->
-                        <TextView
-                            android:id="@+id/recommendText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="추천순    |"
-                            android:layout_marginRight="10dp"
-                            android:onClick="showRecommendLayout" />
+<!--                        &lt;!&ndash; 추천순 텍스트 &ndash;&gt;-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/recommendText"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="추천순    |"-->
+<!--                            android:layout_marginRight="10dp"-->
+<!--                            android:onClick="showRecommendLayout" />-->
 
-                        <!-- 내리뷰 텍스트 -->
-                        <TextView
-                            android:id="@+id/myReviewText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="내리뷰"
-                            android:layout_marginRight="20dp"
-                            android:onClick="showMyReviewLayout" />
+<!--                        &lt;!&ndash; 내리뷰 텍스트 &ndash;&gt;-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/myReviewText"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="내리뷰"-->
+<!--                            android:layout_marginRight="20dp"-->
+<!--                            android:onClick="showMyReviewLayout" />-->
 
-                    </LinearLayout>
+<!--                    </LinearLayout>-->
 
                     <!-- 최신순 레이아웃 -->
                     <RelativeLayout
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="10dp"
                         android:id="@+id/latestLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -352,37 +352,37 @@
                         </androidx.recyclerview.widget.RecyclerView>
                     </RelativeLayout>
 
-                    <!-- 추천순 레이아웃 -->
-                    <RelativeLayout
-                        android:layout_marginTop="30dp"
-                        android:id="@+id/recommendLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone">
+<!--                    &lt;!&ndash; 추천순 레이아웃 &ndash;&gt;-->
+<!--                    <RelativeLayout-->
+<!--                        android:layout_marginTop="30dp"-->
+<!--                        android:id="@+id/recommendLayout"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:visibility="gone">-->
 
-                        <!-- 여기에 추천순 리뷰가 뜨면돼 -->
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="추천순 내용"
-                            android:textSize="24sp" />
-                    </RelativeLayout>
+<!--                        &lt;!&ndash; 여기에 추천순 리뷰가 뜨면돼 &ndash;&gt;-->
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="추천순 내용"-->
+<!--                            android:textSize="24sp" />-->
+<!--                    </RelativeLayout>-->
 
-                    <!-- 내리뷰 레이아웃 -->
-                    <RelativeLayout
-                        android:layout_marginTop="30dp"
-                        android:id="@+id/myReviewLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone">
+<!--                    &lt;!&ndash; 내리뷰 레이아웃 &ndash;&gt;-->
+<!--                    <RelativeLayout-->
+<!--                        android:layout_marginTop="30dp"-->
+<!--                        android:id="@+id/myReviewLayout"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:visibility="gone">-->
 
-                        <!-- 여기에 내리뷰 리뷰가 뜨면돼 -->
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="내리뷰 내용"
-                            android:textSize="24sp" />
-                    </RelativeLayout>
+<!--                        &lt;!&ndash; 여기에 내리뷰 리뷰가 뜨면돼 &ndash;&gt;-->
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="내리뷰 내용"-->
+<!--                            android:textSize="24sp" />-->
+<!--                    </RelativeLayout>-->
 
                 </LinearLayout>
 

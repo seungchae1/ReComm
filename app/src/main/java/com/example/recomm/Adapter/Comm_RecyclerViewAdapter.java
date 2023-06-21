@@ -23,8 +23,10 @@ import com.example.recomm.Model.Comm;
 import com.example.recomm.R;
 
 import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Comm_RecyclerViewAdapter extends RecyclerView.Adapter<Comm_RecyclerViewAdapter.ViewHolder> {
     private Context context;
@@ -68,8 +70,6 @@ public class Comm_RecyclerViewAdapter extends RecyclerView.Adapter<Comm_Recycler
         Comm item = commList.get(position);
         holder.user.setText(item.getUserId());
         holder.Content.setText(item.getContent());
-        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
-        //String formattedTime = sdf.format(Date.valueOf(item.getDate()));
         holder.date.setText(item.getDate());
     }
 
@@ -77,5 +77,6 @@ public class Comm_RecyclerViewAdapter extends RecyclerView.Adapter<Comm_Recycler
     public int getItemCount() {
         return commList.size();
     }
+
 
 }
